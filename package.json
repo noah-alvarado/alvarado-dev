@@ -1,0 +1,9 @@
+{
+  "name": "alvarado-dev",
+  "version": "1.0.0",
+  "description": "Portflio/Playground for myself and my family.",
+  "main": "src/main.tsx",
+  "repository": "git@github.com:noah-alvarado/alvarado-dev.git",
+  "author": "Noah Alvarado <noah@alvarado.dev>",
+  "license": "MIT"
+}
