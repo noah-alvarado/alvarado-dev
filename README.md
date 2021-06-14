@@ -4,4 +4,4 @@ https://alvarado.dev
 
 ## About
 
-Portflio/Playground for myself and my family.
+Portfolio/Playground for myself and my family.
