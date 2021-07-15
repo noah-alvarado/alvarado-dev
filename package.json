@@ -9,8 +9,7 @@
     "start": "yarn dev",
     "dev": "snowpack dev",
     "build": "snowpack build",
-    "deploy:dev": "echo \"not yet, need to hook up Firebase\"",
-    "deploy:prod": "echo \"not yet, need to hook up Firebase\"",
+    "deploy": "yarn build && firebase deploy",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "yarn lint --fix"
   },
