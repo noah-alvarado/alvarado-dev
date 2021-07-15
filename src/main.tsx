@@ -1,5 +1,5 @@
-import {App} from './app';
-import {render} from 'solid-js/web';
+import { App } from './app';
+import { render } from 'solid-js/web';
 
 const dispose = render(() => <App />, document.getElementById('app') as HTMLElement);
 

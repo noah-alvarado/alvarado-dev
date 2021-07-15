@@ -6,7 +6,9 @@ import { routes } from './routes';
 export const App: Component = () => {
   return (
     <Router routes={routes}>
+      {/* header goes here */}
       <Route />
+      {/* footer goes here */}
     </Router>
   );
 };
