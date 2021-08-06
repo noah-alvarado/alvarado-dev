@@ -1,13 +1,14 @@
-import { Route, Router } from 'solid-app-router';
+import { Router, useRoutes } from 'solid-app-router';
 
 import { Component } from 'solid-js';
 import { routes } from './routes';
 
 export const App: Component = () => {
+  const Routes = useRoutes(routes);
   return (
-    <Router routes={routes}>
+    <Router>
       {/* header goes here */}
-      <Route />
+      <Routes />
       {/* footer goes here */}
     </Router>
   );
