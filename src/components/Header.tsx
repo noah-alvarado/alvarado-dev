@@ -3,11 +3,9 @@ import { Link, NavLink } from 'solid-app-router';
 
 // TODO: add github and linkedin icon links
 const links: MenuLinkProps[] = [
-  { title: 'About', href: '/about' },
   { title: 'Projects', href: '/projects' },
 
-  // idea for contact page:
-  // might be dropdown if on main page and there are multiple profiles (noah + jude + abram)
+  // IDEA: might be dropdown if on main page and there are multiple profiles (noah + jude + abram)
   { title: 'Contact', href: '/contact' },
 ];
 
@@ -31,7 +29,7 @@ const MenuLink: Component<MenuLinkProps> = (props) => {
 const Header: Component = () => {
   return (
     <header class="bg-blue-700 text-white py-6">
-      {/* if on a specific person's page, change to their picture and logo */}
+      {/* IDEA: if on a specific person's page, change to their picture and logo */}
       <div class="container flex justify-between items-baseline mx-auto px-4">
         <Link href="/">
           <h1 class="text-2xl">alvarado.dev</h1>
