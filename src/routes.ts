@@ -3,17 +3,17 @@ import { lazy } from 'solid-js';
 
 export const routes: RouteDefinition[] = [
   {
-    path: '/',
+    path: '*all',
     component: lazy(() => import('./pages/Home')),
   },
-  {
-    path: '/projects',
-    component: lazy(() => import('./pages/Projects')),
-  },
-  {
-    path: '/contact',
-    component: lazy(() => import('./pages/Contact')),
-  },
+  // {
+  //   path: '/projects',
+  //   component: lazy(() => import('./pages/Projects')),
+  // },
+  // {
+  //   path: '/contact',
+  //   component: lazy(() => import('./pages/Contact')),
+  // },
   // {
   //   path: '/users/:id',
   //   component: lazy(() => import('./pages/users/[id].js')),
