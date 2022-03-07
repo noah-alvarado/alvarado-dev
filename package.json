@@ -8,8 +8,8 @@
   "scripts": {
     "start": "yarn dev",
     "dev": "snowpack dev",
-    "build": "snowpack build",
-    "deploy": "yarn build && firebase deploy",
+    "deploy": "./deploy.sh prod",
+    "preview": "./deploy.sh qa",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "yarn lint --fix"
   },
