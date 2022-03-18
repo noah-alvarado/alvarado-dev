@@ -30,11 +30,11 @@ const Header: Component = () => {
   return (
     <header class="bg-blue-700 text-white py-6">
       {/* IDEA: if on a specific person's page, change to their picture and logo */}
-      <div class="container flex justify-between items-baseline mx-auto px-4">
+      <div class="container flex justify-between items-baseline px-4">
         <Link href="/">
           <h1 class="text-2xl">alvarado.dev</h1>
         </Link>
-        <nav class="container flex justify-end items-baseline mx-auto px-4">
+        <nav class="screeflex flex-nowrap">
           <ul class="list-none flex items-baseline gap-6">
             <For each={links} children={MenuLink} />
           </ul>
