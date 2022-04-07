@@ -3,9 +3,11 @@ import { Link, NavLink } from 'solid-app-router';
 
 // TODO: add github and linkedin icon links
 const links: MenuLinkProps[] = [
-  { title: 'Projects', href: '/projects' },
+  { title: 'About', href: '/about' },
 
-  // IDEA: might be dropdown if on main page and there are multiple profiles (noah + jude + abram)
+  // TODO: do some projects
+  // { title: 'Projects', href: '/projects' },
+
   { title: 'Contact', href: '/contact' },
 ];
 
@@ -13,13 +15,7 @@ type MenuLinkProps = { title: string; href: string; };
 const MenuLink: Component<MenuLinkProps> = (props) => {
   return (
     <li>
-      <NavLink
-        href={props.href}
-        class="text-lg text-white hover:bg-indigo-500 py-2 px-6 rounded-lg"
-
-        // might not need this once other pages are made
-        end
-      >
+      <NavLink href={props.href} class="text-sm md:text-md">
         {props.title}
       </NavLink>
     </li>
@@ -28,17 +24,20 @@ const MenuLink: Component<MenuLinkProps> = (props) => {
 
 const Header: Component = () => {
   return (
-    <header class="bg-blue-700 text-white py-6">
-      {/* IDEA: if on a specific person's page, change to their picture and logo */}
-      <div class="container flex justify-between items-baseline px-4">
-        <Link href="/">
-          <h1 class="text-2xl">alvarado.dev</h1>
-        </Link>
-        <nav class="screeflex flex-nowrap">
-          <ul class="list-none flex items-baseline gap-6">
-            <For each={links} children={MenuLink} />
-          </ul>
-        </nav>
+    <header class="text-stone-300 bg-stone-900">
+      <div class="container p-4 mx-auto">
+        {/* TODO: if on a specific person's page, change to their picture and logo */}
+        <div class="flex flex-wrap justify-between items-baseline gap-x-4">
+          <Link href="/">
+            {/* TODO: be creative (ask Emily for help) and come up with a logo */}
+            <h1 class="text-2xl">alvarado.dev</h1>
+          </Link>
+          <nav class="flex flex-nowrap">
+            <ul class="list-none flex items-baseline gap-x-6 gap-y-2">
+              <For each={links} children={MenuLink} />
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
   );

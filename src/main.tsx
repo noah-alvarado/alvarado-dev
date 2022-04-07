@@ -1,7 +1,15 @@
 import { App } from './App';
+import { Router } from 'solid-app-router';
 import { render } from 'solid-js/web';
 
-const dispose = render(() => <App />, document.getElementById('app') as HTMLElement);
+const dispose = render(
+    () => (
+      <Router>
+        <App />
+      </Router>
+    ),
+  document.getElementById('app') as HTMLElement,
+);
 
 /**
  * Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
