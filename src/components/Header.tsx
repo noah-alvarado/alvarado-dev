@@ -1,23 +1,20 @@
+import * as feather from 'feather-icons';
+
 import { Component, For } from 'solid-js';
-import { Link, NavLink } from 'solid-app-router';
 
-// TODO: add github and linkedin icon links
+import { Link } from 'solid-app-router';
+
+type MenuLinkProps = { alt: string; icon: string; href: string; };
 const links: MenuLinkProps[] = [
-  { title: 'About', href: '/about' },
-
-  // TODO: do some projects
-  // { title: 'Projects', href: '/projects' },
-
-  { title: 'Contact', href: '/contact' },
+  { alt: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/in/noah-alvarado/' },
+  { alt: 'GitHub', icon: 'github', href: 'https://github.com/noah-alvarado' },
 ];
 
-type MenuLinkProps = { title: string; href: string; };
 const MenuLink: Component<MenuLinkProps> = (props) => {
+  const iconHTML = feather.icons[props.icon].toSvg({ class: '' });
   return (
     <li>
-      <NavLink href={props.href} class="text-sm md:text-md">
-        {props.title}
-      </NavLink>
+      <Link href={props.href} innerHTML={iconHTML}></Link>
     </li>
   );
 };
@@ -27,18 +24,19 @@ const Header: Component = () => {
     <header class="text-stone-300 bg-stone-900">
       <div class="container p-4 mx-auto">
         {/* TODO: if on a specific person's page, change to their picture and logo */}
-        <div class="flex flex-wrap justify-between items-baseline gap-x-4">
+        <div class="flex flex-wrap justify-between items-center gap-x-4 gap-y-2">
           <Link href="/">
             {/* TODO: be creative (ask Emily for help) and come up with a logo */}
-            <h1 class="text-2xl">alvarado.dev</h1>
+            <h1 class="text-2xl leading-none">alvarado.dev</h1>
           </Link>
-          <nav class="flex flex-nowrap">
-            <ul class="list-none flex items-baseline gap-x-6 gap-y-2">
+          <div class="flex flex-nowrap">
+            <ul class="list-none flex items-baseline gap-x-6">
               <For each={links} children={MenuLink} />
             </ul>
-          </nav>
+          </div>
         </div>
       </div>
+      <div class="w-full h-1 bg-cyan-500" />
     </header>
   );
 };

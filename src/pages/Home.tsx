@@ -32,7 +32,7 @@ const Home: Component = () => {
         <p>
           Some examples include a <Link href="https://numun.org/">website and conference solution</Link> for a Model UN organization and a <Link href="https://unfound.app/">cross-platform social media app</Link> with a worldwide presence.
           Some technologies I used include React and React Native, Angular, Python + Flask, Node.js + Express, SQLite, PostgreSQL, MongoDB, NGINX, and AWS.
-          If you would like a copy of my resume or have any other questions please contact me using <Link href="/contact">this form</Link>.
+          If you would like a copy of my resume or have any other questions please contact me using the form below.
         </p>
       </article>
     </>
