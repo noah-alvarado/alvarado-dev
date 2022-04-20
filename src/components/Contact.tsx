@@ -72,7 +72,9 @@ const Contact: Component = () => {
       </ul>
 
       <div class="relative">
-        <button type="submit" disabled={isDisabled()} class="relative w-28 h-9 rounded-md mt-3 text-stone-300 bg-slate-700">
+        <button type="submit" disabled={isDisabled()}
+          class="relative w-28 h-9 rounded-md mt-3 font-semibold
+               text-stone-300 dark:text-stone-800 bg-slate-700 dark:bg-orange-200">
           {buttonMessage()}
         </button>
         <p class="absolute top-[-.3rem] left-[8rem] max-w-[30.5rem] overflow-hidden overflow-ellipsis whitespace-nowrap text-red-400">{error() || ''}</p>

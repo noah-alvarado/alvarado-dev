@@ -6,7 +6,13 @@ module.exports = {
   ],
   dark: false,
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        turquoise: {
+          400: '#30d5c8',
+        },
+      },
+    },
   },
   variants: {},
   plugins: [
