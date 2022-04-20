@@ -21,7 +21,7 @@ const MenuLink: Component<MenuLinkProps> = (props) => {
 
 const Header: Component = () => {
   return (
-    <header class="text-stone-300 bg-stone-900">
+    <header class="text-stone-300 bg-stone-900 sticky top-0 z-10">
       <div class="container p-4 mx-auto">
         {/* TODO: if on a specific person's page, change to their picture and logo */}
         <div class="flex flex-wrap justify-between items-center gap-x-4 gap-y-2">
@@ -36,7 +36,7 @@ const Header: Component = () => {
           </div>
         </div>
       </div>
-      <div class="w-full h-1 bg-cyan-500" />
+      <div class="w-full h-[2px] bg-orange-400" />
     </header>
   );
 };

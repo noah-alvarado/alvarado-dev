@@ -20,5 +20,6 @@ module.exports = {
       'error',
       'always',
     ],
+    'indent': ['error', 2],
   },
 };

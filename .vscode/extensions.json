@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "bradlc.vscode-tailwindcss",
     "streetsidesoftware.code-spell-checker",
-    "amatiasq.sort-imports"
+    "amatiasq.sort-imports",
+    "oouo-diogo-perdigao.docthis"
   ]
 }
