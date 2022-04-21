@@ -1,8 +1,10 @@
 {
-    "recommendations": [
-        "dbaeumer.vscode-eslint",
-        "bradlc.vscode-tailwindcss",
-        "streetsidesoftware.code-spell-checker",
-        "amatiasq.sort-imports"
-    ]
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "streetsidesoftware.code-spell-checker",
+    "amatiasq.sort-imports",
+    "oouo-diogo-perdigao.docthis",
+    "csstools.postcss"
+  ]
 }

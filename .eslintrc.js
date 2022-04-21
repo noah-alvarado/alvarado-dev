@@ -15,13 +15,11 @@ module.exports = {
     '@typescript-eslint',
   ],
   'rules': {
-    'max-len': [
-      'error',
-      120,
-    ],
+    'max-len': 'off',
     'object-curly-spacing': [
       'error',
       'always',
     ],
+    'indent': ['error', 2],
   },
 };

@@ -1,13 +1,24 @@
 module.exports = {
-  mode: 'jit',
-  purge: [
-    './public/**/*.html',
+  darkMode: 'class',
+  content: [
+    'public/**/*.{html,js}',
     'src/**/*.{js,jsx,ts,tsx}',
   ],
-  dark: false,
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: '560px',
+      },
+      colors: {
+        turquoise: {
+          400: '#30d5c8',
+        },
+      },
+    },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
 };
