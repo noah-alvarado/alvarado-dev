@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '560px',
+      },
       colors: {
         turquoise: {
           400: '#30d5c8',

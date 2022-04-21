@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  .bg-base {
-    @apply bg-stone-50 dark:bg-stone-800;
-  }
+.bg-base {
+  @apply bg-stone-50 dark:bg-stone-800;
 }
 
 @layer components {

@@ -3,6 +3,7 @@ import * as feather from 'feather-icons';
 import { Component, For } from 'solid-js';
 
 import { Link } from 'solid-app-router';
+import Toggle from './Toggle';
 
 type MenuLinkProps = { alt: string; icon: string; href: string; };
 const links: MenuLinkProps[] = [
@@ -30,7 +31,8 @@ const Header: Component = () => {
             <h1 class="text-2xl leading-none">alvarado.dev</h1>
           </Link>
           <div class="flex flex-nowrap">
-            <ul class="list-none flex items-baseline gap-x-6">
+            <ul class="list-none flex items-center gap-x-6">
+              {/* <Toggle /> */}
               <For each={links} children={MenuLink} />
             </ul>
           </div>

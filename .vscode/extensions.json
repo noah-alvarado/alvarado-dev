@@ -4,6 +4,7 @@
     "bradlc.vscode-tailwindcss",
     "streetsidesoftware.code-spell-checker",
     "amatiasq.sort-imports",
-    "oouo-diogo-perdigao.docthis"
+    "oouo-diogo-perdigao.docthis",
+    "csstools.postcss"
   ]
 }
