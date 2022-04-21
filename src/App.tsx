@@ -7,10 +7,10 @@ export const App: Component = () => {
   const Routes = useRoutes(routes);
 
   return (
-    <>
+    <div class="dark bg-base">
       <Header />
       <Routes />
       {/* footer goes here */}
-    </>
+    </div>
   );
 };

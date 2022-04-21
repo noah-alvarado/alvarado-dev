@@ -3,11 +3,11 @@ import { Router } from 'solid-app-router';
 import { render } from 'solid-js/web';
 
 const dispose = render(
-    () => (
-      <Router>
-        <App />
-      </Router>
-    ),
+  () => (
+    <Router>
+      <App />
+    </Router>
+  ),
   document.getElementById('app') as HTMLElement,
 );
 

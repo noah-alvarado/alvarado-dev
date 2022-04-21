@@ -1,10 +1,9 @@
 module.exports = {
-  mode: 'jit',
+  darkMode: 'class',
   content: [
-    './public/**/*.html',
+    'public/**/*.{html,js}',
     'src/**/*.{js,jsx,ts,tsx}',
   ],
-  dark: false,
   theme: {
     extend: {
       colors: {

@@ -3,13 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-
   .bg-base {
     @apply bg-stone-50 dark:bg-stone-800;
-  }
-
-  html {
-    @apply bg-base;
   }
 }
 
