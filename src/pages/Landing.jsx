@@ -5,7 +5,7 @@ export default function Landing() {
     return (
         <div
             className="
-                min-w-screen min-h-screen
+                w-full h-full
                 flex flex-col items-center justify-center
                 bg-[#fdf6e3] dark:bg-gray-900
                 px-[72px] gap-8
@@ -19,8 +19,8 @@ export default function Landing() {
             >
                 Welcome to alvarado.dev
             </h1>
-            <TitleCard href="/noah" alt="Go to Noah's site" target="_self" onClick={handleCardClick}>
-                Click this box to visit my site!
+            <TitleCard href="/noah" alt="Go to Noah's site" target="_self">
+                <h2>Noah Alvarado</h2>
             </TitleCard>
         </div>
     );

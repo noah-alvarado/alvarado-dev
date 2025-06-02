@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 
-function TitleCard({ children, href, alt, target, className = '' }) {
+function TitleCard({ children, href, ariaLabel, target, className = '' }) {
   const baseClasses = `
     block
     p-14
@@ -17,14 +18,14 @@ function TitleCard({ children, href, alt, target, className = '' }) {
 
   if (href) {
     return (
-      <a
-        href={href}
-        alt={alt}
+      <Link
+        to={href}
+        aria-label={ariaLabel}
         target={target}
         className={`${baseClasses} ${pointerClass}`}
       >
         {children}
-      </a>
+      </Link>
     );
   } else {
     return (
