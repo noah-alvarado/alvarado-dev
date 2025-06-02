@@ -17,7 +17,11 @@ function TitleCard() {
         cursor-pointer
       "
     >
-      <p className="text-gray-600 dark:text-gray-300">
+      <p
+        className="
+          text-gray-600 dark:text-gray-300
+        "
+      >
         Click this box to visit my site!
       </p>
     </a>
