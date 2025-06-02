@@ -19,7 +19,7 @@ export default function Landing() {
             >
                 Welcome to alvarado.dev
             </h1>
-            <TitleCard href="https://alvarado.dev">
+            <TitleCard href="/noah" alt="Go to Noah's site" target="_self" onClick={handleCardClick}>
                 Click this box to visit my site!
             </TitleCard>
         </div>

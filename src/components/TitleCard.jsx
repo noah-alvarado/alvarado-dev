@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TitleCard({ children, href, className = '' }) {
+function TitleCard({ children, href, alt, target, className = '' }) {
   const baseClasses = `
     block
     p-14
@@ -19,6 +19,8 @@ function TitleCard({ children, href, className = '' }) {
     return (
       <a
         href={href}
+        alt={alt}
+        target={target}
         className={`${baseClasses} ${pointerClass}`}
       >
         {children}
