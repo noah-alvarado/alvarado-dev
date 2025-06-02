@@ -2,14 +2,19 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import RssTicker from './RssTicker';
 
-const headerTextClassName = `
-    text-lg
-    text-gray-900 dark:text-gray-200
-    hover:font-bold focus:font-bold
+const hoverAndFocusClassName = `
+    flex justify-center 
+    px-1
+    hover:font-extrabold focus:font-extrabold
     focus:outline-none
     focus:ring-2
     focus:ring-gray-400
-    px-1
+`;
+
+const headerTextClassName = `
+    text-xl
+    font-semibold
+    text-gray-900 dark:text-gray-200
 `;
 
 export default function Header() {
@@ -21,15 +26,15 @@ export default function Header() {
         >
             <RssTicker />
             <div className="flex items-center justify-between px-8 py-4 border-t-2 border-gray-900">
-                <Link to="/" aria-label="Go to homepage">
-                    <span className={headerTextClassName}>alvarado.dev</span>
+                <Link to="/" aria-label="Go to homepage" className={`w-36 ${hoverAndFocusClassName} ${headerTextClassName}`}>
+                    alvarado.dev
                 </Link>
                 <nav className="flex gap-6" aria-label="Main navigation">
-                    <Link to="/" aria-label="Home">
-                        <span className={headerTextClassName}>Home</span>
+                    <Link to="/" aria-label="Home" className={`w-16 ${hoverAndFocusClassName} ${headerTextClassName}`}>
+                        Home
                     </Link>
-                    <Link to="/noah" aria-label="Noah">
-                        <span className={headerTextClassName}>Noah</span>
+                    <Link to="/noah" aria-label="Noah" className={`w-16 ${hoverAndFocusClassName} ${headerTextClassName}`}>
+                        Noah
                     </Link>
                 </nav>
             </div>

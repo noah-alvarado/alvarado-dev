@@ -5,7 +5,7 @@ export default function Noah() {
   return (
     <div
       className="
-        w-full h-full
+        w-full flex-1
         flex flex-col items-center justify-center
         bg-[#e0f7fa] dark:bg-gray-800
       "

@@ -6,16 +6,24 @@ import Header from './components/Header.jsx';
 import Landing from './pages/Landing.jsx';
 import Noah from './pages/Noah.jsx';
 
+const routes = [
+  { path: '/', element: <Landing /> },
+  { path: '/noah', element: <Noah /> },
+];
+
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/noah" element={<Noah />} />
-      </Routes>
-    </>
+      <div className="flex-1 flex flex-col">
+        <Routes>
+          {routes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
+        </Routes>
+      </div>
+    </div>
   )
-}4
+}
 
 export default App

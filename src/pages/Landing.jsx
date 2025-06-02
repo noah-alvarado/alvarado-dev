@@ -5,7 +5,7 @@ export default function Landing() {
     return (
         <div
             className="
-                w-full
+                w-full flex-1
                 flex flex-col items-center justify-center
                 bg-[#fdf6e3] dark:bg-gray-900
                 pt-8 px-16 pb-16 gap-8
