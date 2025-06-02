@@ -1,6 +1,6 @@
 import './App.css';
 
-import TitleCard from './TitleCard.jsx';
+import TitleCard from './components/TitleCard.jsx';
 
 function App() {
   return (
