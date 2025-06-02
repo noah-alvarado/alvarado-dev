@@ -1,12 +1,16 @@
 import './App.css';
 
-import TitleCard from './components/TitleCard.jsx';
+import { Route, Routes } from 'react-router-dom';
+
+import Landing from './pages/Landing.jsx';
+import Noah from './pages/Noah.jsx';
 
 function App() {
   return (
-    <div className="min-w-screen min-h-screen flex items-center justify-center bg-[#fdf6e3] dark:bg-gray-900">
-      <TitleCard />
-    </div>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/noah" element={<Noah />} />
+    </Routes>
   )
 }
 
