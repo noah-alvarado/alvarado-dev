@@ -19,7 +19,9 @@ export default function Landing() {
             >
                 Welcome to alvarado.dev
             </h1>
-            <TitleCard />
+            <TitleCard href="https://alvarado.dev">
+                Click this box to visit my site!
+            </TitleCard>
         </div>
     );
 }
