@@ -1,14 +1,15 @@
 import React from 'react';
-import TitleCard from '../components/TitleCard.jsx';
+import { pageContentClassName } from '../styles/styles.js';
 
 export default function Noah() {
   return (
     <div
-      className="
+      className={`
+        ${pageContentClassName}
         w-full flex-1
-        flex flex-col items-center justify-center
+        flex flex-col items-center justify-start
         bg-[#e0f7fa] dark:bg-gray-800
-      "
+      `}
     >
       <h1
         className="
