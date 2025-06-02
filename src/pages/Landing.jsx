@@ -5,10 +5,10 @@ export default function Landing() {
     return (
         <div
             className="
-                w-full h-full
+                w-full
                 flex flex-col items-center justify-center
                 bg-[#fdf6e3] dark:bg-gray-900
-                px-[72px] gap-8
+                pt-8 px-16 pb-16 gap-8
             "
         >
             <h1
