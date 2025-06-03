@@ -19,14 +19,27 @@ export default function Landing() {
                     text-3xl font-bold mb-2
                     text-gray-900 dark:text-gray-100
                     cursor-default
+                    text-center
                 "
             >
-                Welcome to:<span className="text-4xl pl-3">alvarado.dev</span>
+                Welcome&nbsp;to: <span className="text-4xl pl-3">alvarado.dev</span>
             </h1>
-            <TitleCard href="/noah" alt="Go to Noah's site" target="_self" className="bg-[#e0f7fa] dark:bg-gray-800">
-                <h2 className="text-2xl font-semibold">Noah</h2>
-                <OptimizedImage basePath="noah/noah-2" alt="Noah Alvarado pictured in Sioux Falls, SD" />
-            </TitleCard>
+            <div className="flex items-center justify-center">
+                <TitleCard href="/noah" alt="Go to Noah's site" target="_self" className="bg-[#e0f7fa] dark:bg-gray-800">
+                    <div className="flex flex-col-reverse sm:!grid sm:grid-cols-2 sm:gap-4 sm:items-center">
+                        <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden">
+                            <OptimizedImage
+                                basePath="noah/noah-1"
+                                alt="Noah Alvarado pictured in Sioux Falls, SD"
+                            />
+                        </div>
+                        <div>
+                            <h2 className="text-2xl font-semibold">Noah</h2>
+                            <p className="text-lg text-gray-600 dark:text-gray-300 mt-1 italic">Sioux Falls, SD</p>
+                        </div>
+                    </div>
+                </TitleCard>
+            </div>
         </div>
     );
 }
