@@ -27,7 +27,7 @@ export default function Landing() {
             <div className="flex items-center justify-center">
                 <TitleCard href="/noah" alt="Go to Noah's site" target="_self" className="bg-[#e0f7fa] dark:bg-gray-800">
                     <div className="flex flex-col-reverse sm:!grid sm:grid-cols-2 sm:gap-4 sm:items-center">
-                        <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden">
+                        <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden mt-2 sm:mt-0">
                             <OptimizedImage
                                 basePath="noah/noah-1"
                                 alt="Noah Alvarado pictured in Sioux Falls, SD"

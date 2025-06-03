@@ -4,11 +4,12 @@ import RssTicker from './RssTicker';
 
 const hoverAndFocusClassName = `
     flex justify-center 
-    px-1
-    hover:font-extrabold focus:font-extrabold
-    focus:outline-none
-    focus:ring-2
-    focus:ring-gray-400
+    px-4
+    rounded-sm
+    hover:font-extrabold focus-visible:font-extrabold
+    focus-visible:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-gray-900
 `;
 
 const headerTextClassName = `
