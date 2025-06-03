@@ -22,7 +22,7 @@ export default function Landing() {
                     text-center
                 "
             >
-                Welcome&nbsp;to: <span className="text-4xl pl-3">alvarado.dev</span>
+                Welcome&nbsp;to <span className="text-4xl pl-1">alvarado.dev</span>
             </h1>
             <div className="flex items-center justify-center">
                 <TitleCard href="/noah" alt="Go to Noah's site" target="_self" className="bg-[#e0f7fa] dark:bg-gray-800">
