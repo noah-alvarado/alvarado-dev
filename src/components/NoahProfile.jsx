@@ -48,10 +48,13 @@ const NoahProfile = () => (
                 </p>
                 <div className="flex gap-4 mt-2">
                     <a
-                        href={`mailto:${noahProfile.contact.email}`}
+                        href={noahProfile.contact.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Noah's GitHub profile"
                         className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
                     >
-                        Email
+                        GitHub
                     </a>
                     <a
                         href={noahProfile.contact.linkedin}

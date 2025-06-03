@@ -20,6 +20,7 @@ const noahProfile = {
   title: "full stack developer",
   location: "Sioux Falls, South Dakota, United States",
   contact: {
+    github: "https://github.com/noah-alvarado",
     linkedin: "https://www.linkedin.com/in/noah-alvarado"
   },
   skills: [
@@ -39,7 +40,7 @@ const noahProfile = {
     { language: "Greek", proficiency: "B2" },
     { language: "English", proficiency: "Native" }
   ],
-  summary: "I enjoy building practical software solutions and solving technical problems. With a proven history of tackling a wide range of challenges, I’m comfortable adapting to new situations and requirements. My favorite pastimes are bouldering, traveling, and spending time with my cat, Finn.",
+  summary: "I enjoy building practical software solutions and solving technical problems. With a proven history of tackling a wide range of challenges, I’m comfortable adapting to new situations and requirements. My favorite pastimes are bouldering, traveling, and spending time with my cat Finn.",
   education: [
     {
       school: "Northwestern University",
