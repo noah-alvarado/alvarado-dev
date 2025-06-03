@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "preview": "vite preview",
+    "deploy:qa": "./deploy.sh qa",
+    "deploy:prod": "./deploy.sh prod",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "preview": "vite preview",
     "optimize-images": "node optimize-images.mjs"
   },
   "dependencies": {
@@ -27,6 +29,7 @@
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "firebase-tools": "^14.5.1",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "postcss": "^8.5.4",
