@@ -17,16 +17,16 @@ case $1 in
     while true; do
       read -p "Are you sure you're ready to deploy to production? " yn
       case $yn in
-          [Yy]* )
-            acceptance-tests
-            build-app
-            firebase login
-            firebase deploy
-            break;;
-          [Nn]* )
-            exit;;
-          * )
-            echo "Please answer yes or no.";;
+        [Yy]* )
+          acceptance-tests
+          build-app
+          firebase login
+          firebase deploy
+          break;;
+        [Nn]* )
+          exit;;
+        * )
+          echo "Please answer yes or no.";;
       esac
     done
     ;;
@@ -36,16 +36,9 @@ case $1 in
     acceptance-tests
     build-app
     firebase login
-    output=$(firebase hosting:channel:deploy preview 2>&1)
-    status=$?
-    if [ $status -ne 0 ]; then
-      echo "Firebase deploy failed with output:"
-      echo "$output"
-      exit $status
-    else
-      echo "$output" | grep -o "https://alvarado.dev--preview-.*\\.web\\.app"
-    fi
+    firebase hosting:channel:deploy preview
     ;;
   
-  * ) echo "Please supply either 'production' or 'qa'";;
+  * )
+    echo "Please supply either 'production' or 'qa'";;
 esac
