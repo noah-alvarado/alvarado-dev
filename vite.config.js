@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { execSync } from 'child_process';
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -7,5 +8,11 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    {
+      name: 'optimize-images-plugin',
+      buildStart() {
+        execSync('node optimize-images.mjs', { stdio: 'inherit' });
+      }
+    }
   ],
 })

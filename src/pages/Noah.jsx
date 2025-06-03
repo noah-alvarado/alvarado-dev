@@ -17,7 +17,7 @@ export default function Noah() {
           text-gray-900 dark:text-gray-100
         "
       >
-        Welcome to the Noah route!
+        I'm Noah, welcome to my page!
       </h1>
     </div>
   );

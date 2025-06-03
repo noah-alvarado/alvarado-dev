@@ -7,12 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint --fix .",
+    "preview": "vite preview",
+    "optimize-images": "node optimize-images.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.1"
+    "react-router-dom": "^7.6.1",
+    "sharp": "^0.34.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
