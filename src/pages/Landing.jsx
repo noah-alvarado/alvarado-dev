@@ -30,7 +30,7 @@ export default function Landing() {
                         <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden mt-2 sm:mt-0">
                             <OptimizedImage
                                 basePath="noah/noah-1"
-                                alt="Noah outside Roscoe Village Bikes in Chicago, wearing a purple shirt, turquoise Joshua Tree National Park tote bag, and earbuds"
+                                alt="Noah"
                             />
                         </div>
                         <div>

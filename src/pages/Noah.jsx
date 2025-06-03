@@ -1,3 +1,4 @@
+import NoahProfile from '../components/NoahProfile.jsx';
 import React from 'react';
 import { pageContentClassName } from '../styles/styles.js';
 
@@ -11,14 +12,7 @@ export default function Noah() {
         bg-[#e0f7fa] dark:bg-gray-800
       `}
     >
-      <h1
-        className="
-          text-4xl font-bold mb-8 mt-8
-          text-gray-900 dark:text-gray-100
-        "
-      >
-        I'm Noah, welcome to my page!
-      </h1>
+      <NoahProfile />
     </div>
   );
 }
