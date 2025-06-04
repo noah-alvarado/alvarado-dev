@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+    --breakpoint-xs: 32rem;
+}
+
 #root {
     min-width: 100vw;
     min-height: 100vh;

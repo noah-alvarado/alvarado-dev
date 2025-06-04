@@ -29,7 +29,7 @@ const valueClass = `text-gray-800 dark:text-gray-200`;
 const NoahProfile = () => (
     <main className="flex flex-col items-center w-full gap-8">
         {/* Profile Header (leave space for image) */}
-        <section className={`${sectionClass} flex-row flex items-center gap-8`}>
+        <section className={`${sectionClass} grid grid-cols-1 sm:!grid-cols-[8rem_auto] items-center gap-8`}>
             <div className="w-32 h-32 rounded-2xl bg-gray-200 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-gray-400 text-4xl select-none overflow-hidden">
                 <OptimizedImage
                     basePath="noah/noah-1"
