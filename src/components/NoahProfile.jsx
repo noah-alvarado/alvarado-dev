@@ -182,7 +182,7 @@ const NoahProfile = () => (
                         key={exp.company + exp.title + idx}
                         className="flex flex-col gap-1"
                     >
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1">
                             <span className={labelClass}>{exp.company}</span>
                             <span className="text-gray-500 dark:text-gray-400">
                                 {exp.title}
