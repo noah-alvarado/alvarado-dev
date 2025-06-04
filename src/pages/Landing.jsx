@@ -11,7 +11,7 @@ export default function Landing() {
                 w-full flex-1
                 flex flex-col items-center justify-center
                 gap-8
-                bg-[#fdf6e3] dark:bg-gray-900
+                bg-[#fdf6e3] dark:!bg-gray-900
             `}
         >
             <h1

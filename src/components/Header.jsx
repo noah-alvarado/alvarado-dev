@@ -21,7 +21,7 @@ const headerTextClassName = `
 export default function Header() {
     return (
         <header
-            className="w-full bg-[#fdf6e3] dark:bg-gray-900 shadow-md"
+            className="w-full bg-[#fdf6e3] dark:!bg-gray-900 shadow-md"
             role="banner"
             aria-label="Site header"
         >

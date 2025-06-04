@@ -9,7 +9,7 @@ export default function Noah() {
         ${pageContentClassName}
         w-full flex-1
         flex flex-col items-center justify-start
-        bg-[#e0f7fa] dark:bg-gray-800
+        bg-[#e0f7fa] dark:!bg-gray-800
       `}
     >
       <NoahProfile />

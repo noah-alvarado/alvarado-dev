@@ -5,7 +5,7 @@ function TitleCard({ children, href, ariaLabel, target, className = '' }) {
   const baseClasses = `
     block
     p-4
-    bg-white dark:bg-gray-800
+    bg-white dark:!bg-gray-800
     rounded-3xl
     shadow-[0_8px_40px_0_rgba(0,0,0,0.18)]
     hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.28)]
