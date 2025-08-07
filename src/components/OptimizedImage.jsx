@@ -6,7 +6,7 @@ import React from 'react';
  * @param {string} alt - The alt text for the image
  * @param {object} [imgProps] - Additional props for the <img> element
  */
-export default function OptimizedImage({ basePath, alt, imgProps = {}, width = '100%', height = 'auto' }) {
+export default function OptimizedImage({ basePath, alt, imgProps = {}, width = '100%', height = 'auto', className = '' }) {
   const optimizedPath = `/optimized/${basePath}`;
   const srcSet = (ext) => `
     ${optimizedPath}-400.${ext} 400w,
@@ -21,7 +21,7 @@ export default function OptimizedImage({ basePath, alt, imgProps = {}, width = '
     1920px
   `;
   return (
-    <picture>
+    <picture className={className}>
       <source type="image/webp" srcSet={srcSet('webp')} sizes={sizes} />
       <source type="image/png" srcSet={srcSet('png')} sizes={sizes} />
       <img

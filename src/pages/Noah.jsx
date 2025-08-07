@@ -3,6 +3,7 @@ import { pageContentClassName } from '../styles/styles.js';
 import noahProfile from "../assets/noah/noah-profile.js";
 import OptimizedImage from '../components/OptimizedImage.jsx';
 import GitHubIcon from '../components/GitHubIcon.jsx';
+import PhotoGrid from '../components/PhotoGrid.jsx';
 
 // Section container
 const sectionClass = `
@@ -28,12 +29,169 @@ const subheadingClass = `
 const labelClass = `font-semibold text-gray-700 dark:text-gray-300`;
 const valueClass = `text-gray-800 dark:text-gray-200`;
 
-function ExperienceItem({ company, title, dates, location, details, index }) {
+const featuredPhotos = [
+  {
+    src: 'noah/sioux-falls-seated-zoom',
+    alt: '',
+    span: { x: 2, y: 1 },
+  },
+  {
+    src: 'noah/chi-selfie',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+
+  {
+    src: 'noah/biking-headshot',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+  {
+    src: 'noah/carlsbad-hike',
+    alt: '',
+    span: { x: 1, y: 2 },
+  },
+  {
+    src: 'noah/seated-professional-square',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+
+  {
+    src: 'noah/norby-finn',
+    alt: '',
+    span: { x: 1, y: 2 },
+  },
+  {
+    src: 'noah/nu-game',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+  {
+    src: 'noah/bosphorus-wide',
+    alt: '',
+    span: { x: 2, y: 1 },
+  },
+
+  {
+    src: 'noah/green-river',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+  {
+    src: 'noah/aegina',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+
+
+  {
+    src: 'noah/walking',
+    alt: '',
+    span: { x: 1, y: 2 },
+  },
+
+  {
+    src: 'noah/pink-house-crew',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+  {
+    src: 'noah/peace-o-pizza',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+
+  {
+    src: 'noah/atvs',
+    alt: '',
+    span: { x: 2, y: 1 },
+  },
+
+  {
+    src: 'noah/biker',
+    alt: '',
+    span: { x: 1, y: 2 },
+  },
+
+  {
+    src: 'noah/uk-with-abram',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+
+
+  {
+    src: 'noah/lakeshore',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+
+  {
+    src: 'noah/ba-observatory',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+  {
+    src: 'noah/bariloche-hike',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+
+  {
+    src: 'noah/esther-the-goat',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
+
+
+  {
+    src: 'noah/lambda',
+    alt: '',
+    span: { x: 2, y: 1 },
+  },
+
+  {
+    src: 'noah/waterfall',
+    alt: 'Noah standing in front of a waterfall on a trail in North Carolina',
+    span: { x: 1, y: 1 },
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+];
+
+function ExperienceItem({ company, title, dates, location, details }) {
   return (
-    <div
-      key={company + title + index}
-      className="flex flex-col gap-1"
-    >
+    <div className="flex flex-col gap-1">
       <div className="flex flex-col sm:flex-row sm:items-center gap-1">
         <span className={labelClass}>{company}</span>
         <span className="text-gray-500 dark:text-gray-400">
@@ -137,6 +295,11 @@ export default function Noah() {
           </div>
         </section>
 
+        {/* Photo Feature */}
+        <section className={sectionClass}>
+          <PhotoGrid photos={featuredPhotos} />
+        </section>
+
         {/* Projects */}
         <section className={`${sectionClass} grid grid-cols-1 gap-2`}>
           <div className="col-span-full">
@@ -222,7 +385,7 @@ export default function Noah() {
             {noahProfile.experience
               .slice(0, showMoreExperience ? noahProfile.experience.length : 4)
               .map((exp, i) => (
-                <ExperienceItem {...exp} index={i} />
+                <ExperienceItem {...exp} key={i} />
               ))}
           </div>
           <button
