@@ -40,14 +40,13 @@ const featuredPhotos = [
     alt: '',
     span: { x: 1, y: 1 },
   },
-
   {
-    src: 'noah/biking-headshot',
+    src: 'noah/nu-game',
     alt: '',
     span: { x: 1, y: 1 },
   },
   {
-    src: 'noah/carlsbad-hike',
+    src: 'noah/biker',
     alt: '',
     span: { x: 1, y: 2 },
   },
@@ -56,14 +55,13 @@ const featuredPhotos = [
     alt: '',
     span: { x: 1, y: 1 },
   },
-
   {
     src: 'noah/norby-finn',
     alt: '',
     span: { x: 1, y: 2 },
   },
   {
-    src: 'noah/nu-game',
+    src: 'noah/aegina',
     alt: '',
     span: { x: 1, y: 1 },
   },
@@ -72,25 +70,21 @@ const featuredPhotos = [
     alt: '',
     span: { x: 2, y: 1 },
   },
-
+  {
+    src: 'noah/biking-headshot',
+    alt: '',
+    span: { x: 1, y: 1 },
+  },
   {
     src: 'noah/green-river',
     alt: '',
     span: { x: 1, y: 1 },
   },
   {
-    src: 'noah/aegina',
-    alt: '',
-    span: { x: 1, y: 1 },
-  },
-
-
-  {
     src: 'noah/walking',
     alt: '',
     span: { x: 1, y: 2 },
   },
-
   {
     src: 'noah/pink-house-crew',
     alt: '',
@@ -101,32 +95,26 @@ const featuredPhotos = [
     alt: '',
     span: { x: 1, y: 1 },
   },
-
   {
     src: 'noah/atvs',
     alt: '',
     span: { x: 2, y: 1 },
   },
-
   {
-    src: 'noah/biker',
+    src: 'noah/carlsbad-hike',
     alt: '',
     span: { x: 1, y: 2 },
   },
-
   {
     src: 'noah/uk-with-abram',
     alt: '',
     span: { x: 1, y: 1 },
   },
-
-
   {
     src: 'noah/lakeshore',
     alt: '',
     span: { x: 1, y: 1 },
   },
-
   {
     src: 'noah/ba-observatory',
     alt: '',
@@ -137,56 +125,21 @@ const featuredPhotos = [
     alt: '',
     span: { x: 1, y: 1 },
   },
-
   {
     src: 'noah/esther-the-goat',
     alt: '',
     span: { x: 1, y: 1 },
   },
-
-
   {
     src: 'noah/lambda',
     alt: '',
     span: { x: 2, y: 1 },
   },
-
   {
     src: 'noah/waterfall',
     alt: 'Noah standing in front of a waterfall on a trail in North Carolina',
     span: { x: 1, y: 1 },
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ];
 
 function ExperienceItem({ company, title, dates, location, details }) {
