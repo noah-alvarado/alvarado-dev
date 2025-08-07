@@ -175,7 +175,7 @@ export default function Noah() {
         {/* Left Column */}
         <div className={contentColClass}>
           {/* Profile Header */}
-          <section className={`${sectionClass} grid grid-cols-1 sm:grid-cols-[8rem_auto] items-center gap-8`}>
+          <section className={`${sectionClass} !grid !grid-cols-1 sm:!grid-cols-[8rem_auto] items-center`}>
             <div className="w-32 h-32 rounded-2xl bg-gray-200 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-gray-400 text-4xl select-none overflow-hidden">
               <OptimizedImage
                 basePath="noah/professional-headshot"
