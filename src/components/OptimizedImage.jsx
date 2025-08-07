@@ -8,18 +8,9 @@ import React from 'react';
  */
 export default function OptimizedImage({ basePath, alt, imgProps = {}, width = '100%', height = 'auto', className = '' }) {
   const optimizedPath = `/optimized/${basePath}`;
-  const srcSet = (ext) => `
-    ${optimizedPath}-400.${ext} 400w,
-    ${optimizedPath}-800.${ext} 800w,
-    ${optimizedPath}-1200.${ext} 1200w,
-    ${optimizedPath}-1920.${ext} 1920w
-  `;
-  const sizes = `
-    (max-width: 600px) 400px,
-    (max-width: 900px) 800px,
-    (max-width: 1400px) 1200px,
-    1920px
-  `;
+  const srcSet = (ext) => `${optimizedPath}-400.${ext} 400w, ${optimizedPath}-800.${ext} 800w, ${optimizedPath}-1200.${ext} 1200w, ${optimizedPath}-1920.${ext} 1920w`;
+  const sizes = `(width <= 600px) 400px, (width <= 900px) 800px, (width <= 1200px) 1200px, 1920px`;
+  
   return (
     <picture className={className}>
       <source type="image/webp" srcSet={srcSet('webp')} sizes={sizes} />

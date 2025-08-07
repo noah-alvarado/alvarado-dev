@@ -194,6 +194,13 @@ export default function Noah() {
               </p>
               <div className="flex gap-4 mt-2">
                 <a
+                  href="mailto:contact-noah@alvarado.dev"
+                  aria-label="Email Noah"
+                  className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
+                >
+                  contact-noah@alvarado.dev
+                </a>
+                <a
                   href={noahProfile.contact.github}
                   target="_blank"
                   rel="noopener noreferrer"
