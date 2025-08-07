@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import OptimizedImage from '../components/OptimizedImage.jsx';
 
-function TitleCard({ children, href, ariaLabel, target, className = '', image, imageAlt }) {
+function TitleCard({ children, href, ariaLabel, target, className = '', image, imageAlt, title, subtitle }) {
   const baseClasses = `
     block
     p-4
-    bg-white dark:!bg-gray-800
+    bg-[#e0f7fa] dark:bg-gray-800
     rounded-3xl
     shadow-[0_8px_40px_0_rgba(0,0,0,0.18)]
     hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.28)]
@@ -34,6 +34,8 @@ function TitleCard({ children, href, ariaLabel, target, className = '', image, i
             />
           </div>
           <div>
+            <h2 className="text-2xl font-semibold">{title}</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mt-1 italic">{subtitle}</p>
             {children}
           </div>
         </div>

@@ -68,11 +68,11 @@ export default function Noah() {
       `}
     >
       <main className="flex flex-col items-center w-full gap-8">
-        {/* Profile Header (leave space for image) */}
+        {/* Profile Header */}
         <section className={`${sectionClass} grid grid-cols-1 sm:!grid-cols-[8rem_auto] items-center gap-8`}>
           <div className="w-32 h-32 rounded-2xl bg-gray-200 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-gray-400 text-4xl select-none overflow-hidden">
             <OptimizedImage
-              basePath="noah/roscoe-bikes-headshot"
+              basePath="noah/professional-headshot"
               alt="Noah outside Roscoe Village Bikes in Chicago, wearing a purple shirt, turquoise Joshua Tree National Park tote bag, and earbuds"
             />
           </div>

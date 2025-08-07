@@ -24,26 +24,26 @@ export default function Landing() {
             >
                 Welcome&nbsp;to <span className="text-4xl pl-1">alvarado.dev</span>
             </h1>
-            <div className="flex flex-wrap items-center justify-center gap-6">
-                <TitleCard href="/noah" ariaLabel="Go to Noah's site" target="_self" className="bg-[#e0f7fa] dark:bg-gray-800" image="noah/roscoe-bikes-headshot" imageAlt="Noah">
-                    <h2 className="text-2xl font-semibold">Noah</h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 mt-1 italic">Sioux Falls, SD</p>
-                </TitleCard>
 
-                <TitleCard href="/pacific" ariaLabel="Go to the Pacific site" target="_self" className="bg-[#e0f7fa] dark:bg-gray-800">
-                    <div className="flex flex-col-reverse sm:!grid sm:grid-cols-2 sm:gap-4 sm:items-center">
-                        <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden mt-2 sm:mt-0">
-                            <OptimizedImage
-                                basePath="noah/roscoe-bikes-headshot"
-                                alt="Noah"
-                            />
-                        </div>
-                        <div>
-                            <h2 className="text-2xl font-semibold">Noah</h2>
-                            <p className="text-lg text-gray-600 dark:text-gray-300 mt-1 italic">Sioux Falls, SD</p>
-                        </div>
-                    </div>
-                </TitleCard>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+                <TitleCard
+                    href="/noah"
+                    ariaLabel="Go to Noah's site"
+                    target="_self"
+                    image="noah/biking-headshot"
+                    imageAlt="Noah"
+                    title="Noah"
+                    subtitle="Sioux Falls, SD"
+                />
+                <TitleCard
+                    href="/pacific"
+                    ariaLabel="Go to the PACIFIC site"
+                    target="_self"
+                    image="pacific/spread"
+                    imageAlt="PACIFIC Board Game"
+                    title="PACIFIC"
+                    subtitle="Digital Adaptation"
+                />
             </div>
         </div>
     );
