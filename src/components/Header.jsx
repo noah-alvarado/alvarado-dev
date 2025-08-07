@@ -26,7 +26,7 @@ export default function Header() {
             role="banner"
             aria-label="Site header"
         >
-            <RssTicker />
+            <div className="hidden md:block"><RssTicker /></div>
             <div className="flex items-center justify-between px-8 py-4 border-t-2 border-gray-900">
                 <Link to="/" aria-label="Go to homepage" className={`w-36 ${hoverAndFocusClassName} ${headerTextClassName}`}>
                     alvarado.dev

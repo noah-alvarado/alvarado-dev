@@ -183,7 +183,7 @@ export default function Noah() {
               />
             </div>
             <div className="flex-1 flex flex-col gap-1">
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+              <h1 className="mb-1 text-3xl font-bold text-gray-900 dark:text-gray-100">
                 {noahProfile.name}
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-300">
@@ -192,32 +192,34 @@ export default function Noah() {
               <p className="text-md text-gray-500 dark:text-gray-400">
                 {noahProfile.location}
               </p>
-              <div className="flex gap-4 mt-2">
+              <p className="flex flex-wrap gap-x-4 gap-y-1">
                 <a
-                  href="mailto:contact-noah@alvarado.dev"
+                  href="mailto:contact.noah@alvarado.dev"
                   aria-label="Email Noah"
                   className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
                 >
-                  contact-noah@alvarado.dev
+                  contact.noah@alvarado.dev
                 </a>
-                <a
-                  href={noahProfile.contact.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Noah's GitHub profile"
-                  className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
-                >
-                  GitHub
-                </a>
-                <a
-                  href={noahProfile.contact.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
-                >
-                  LinkedIn
-                </a>
-              </div>
+                <span className='flex gap-4'>
+                  <a
+                    href={noahProfile.contact.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Noah's GitHub profile"
+                    className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href={noahProfile.contact.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
+                  >
+                    LinkedIn
+                  </a>
+                </span>
+              </p>
             </div>
           </section>
 
