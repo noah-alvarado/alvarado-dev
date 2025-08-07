@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { pageContentClassName } from '../styles/styles.js';
 import noahProfile from "../assets/noah/noah-profile.js";
 import OptimizedImage from '../components/OptimizedImage.jsx';
@@ -28,7 +28,36 @@ const subheadingClass = `
 const labelClass = `font-semibold text-gray-700 dark:text-gray-300`;
 const valueClass = `text-gray-800 dark:text-gray-200`;
 
+function ExperienceItem({ company, title, dates, location, details, index }) {
+  return (
+    <div
+      key={company + title + index}
+      className="flex flex-col gap-1"
+    >
+      <div className="flex flex-col sm:flex-row sm:items-center gap-1">
+        <span className={labelClass}>{company}</span>
+        <span className="text-gray-500 dark:text-gray-400">
+          {title}
+        </span>
+      </div>
+      <span className="text-sm text-gray-500 dark:text-gray-400">
+        {dates}
+        {location ? `, ${location}` : ""}
+      </span>
+      {details && details.length > 0 && (
+        <ul className="list-disc list-inside ml-4 text-gray-800 dark:text-gray-200 mt-1">
+          {details.map((d, i) => (
+            <li key={i}>{d}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export default function Noah() {
+  const [showMoreExperience, setShowMoreExperience] = useState(false);
+
   return (
     <div
       className={`
@@ -190,31 +219,18 @@ export default function Noah() {
         <section className={sectionClass}>
           <h2 className={headingClass}>Experience</h2>
           <div className="flex flex-col gap-6 mt-2">
-            {noahProfile.experience.map((exp, idx) => (
-              <div
-                key={exp.company + exp.title + idx}
-                className="flex flex-col gap-1"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center gap-1">
-                  <span className={labelClass}>{exp.company}</span>
-                  <span className="text-gray-500 dark:text-gray-400">
-                    {exp.title}
-                  </span>
-                </div>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {exp.dates}
-                  {exp.location ? `, ${exp.location}` : ""}
-                </span>
-                {exp.details && exp.details.length > 0 && (
-                  <ul className="list-disc list-inside ml-4 text-gray-800 dark:text-gray-200 mt-1">
-                    {exp.details.map((d, i) => (
-                      <li key={i}>{d}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
+            {noahProfile.experience
+              .slice(0, showMoreExperience ? noahProfile.experience.length : 4)
+              .map((exp, i) => (
+                <ExperienceItem {...exp} index={i} />
+              ))}
           </div>
+          <button
+            onClick={() => setShowMoreExperience(!showMoreExperience)}
+            className="mt-2 cursor-pointer font-semibold shadow-md hover:shadow-lg transition-all duration-200 bg-white/50 dark:bg-gray-800/50 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80"
+          >
+            {showMoreExperience ? "Show Less" : "Show More"}
+          </button>
         </section>
       </main>
     </div>
