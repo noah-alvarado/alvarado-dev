@@ -26,7 +26,7 @@ function TitleCard({ children, href, ariaLabel, target, className = '', image, i
       className={`${baseClasses} ${pointerClass}`}
     >
       {image ? (
-        <div className="flex flex-col-reverse sm:!grid sm:grid-cols-2 sm:gap-4 sm:items-center">
+        <div className="flex flex-col-reverse sm:grid sm:grid-cols-2 sm:gap-4 sm:items-center">
           <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden mt-2 sm:mt-0">
             <OptimizedImage
               basePath={image}

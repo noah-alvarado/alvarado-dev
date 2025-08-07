@@ -175,12 +175,12 @@ export default function Noah() {
         ${pageContentClassName}
         w-full flex-1
         flex flex-col items-center justify-start
-        bg-[#e0f7fa] dark:!bg-gray-800
+        bg-[#e0f7fa] dark:bg-gray-800
       `}
     >
       <main className="flex flex-col items-center w-full gap-8">
         {/* Profile Header */}
-        <section className={`${sectionClass} grid grid-cols-1 sm:!grid-cols-[8rem_auto] items-center gap-8`}>
+        <section className={`${sectionClass} grid grid-cols-1 sm:grid-cols-[8rem_auto] items-center gap-8`}>
           <div className="w-32 h-32 rounded-2xl bg-gray-200 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-gray-400 text-4xl select-none overflow-hidden">
             <OptimizedImage
               basePath="noah/professional-headshot"
@@ -227,7 +227,7 @@ export default function Noah() {
           </p>
           <div>
             <h3 className={subheadingClass}>Top Skills</h3>
-            <ul className="grid grid-cols-1 sm:!grid-cols-2 gap-x-6 list-disc list-inside text-gray-800 dark:text-gray-200">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 list-disc list-inside text-gray-800 dark:text-gray-200">
               {noahProfile.skills.map((skill) => (
                 <li className="w-fit" key={skill}>{skill}</li>
               ))}
