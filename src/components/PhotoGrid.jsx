@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import OptimizedImage from './OptimizedImage.jsx';
+import { convertRemToPixels } from "../styles/styles.js";
 
 function spanToClasses(span) {
   let classes = '';
-  
+
   if (span.x === 1) classes += 'col-span-1 ';
   else if (span.x === 2) classes += 'col-span-2 ';
 
@@ -32,11 +33,11 @@ function photoToGridItem({ src, alt, span: { x, y } }, i) {
 }
 
 export default function PhotoGrid({ photos }) {
-  const [showMorePhotos, setShowMorePhotos] = useState(false);
+  const [showMorePhotos, setShowMorePhotos] = useState(window.innerWidth >= convertRemToPixels(48));
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-2">
         {photos.slice(0, showMorePhotos ? photos.length : 8).map(photoToGridItem)}
       </div>
       <button

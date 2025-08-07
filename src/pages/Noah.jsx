@@ -178,7 +178,7 @@ export default function Noah() {
         bg-[#e0f7fa] dark:bg-gray-800
       `}
     >
-      <main className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column */}
         <div className="flex flex-col gap-8">
           {/* Profile Header */}
