@@ -4,10 +4,20 @@ export default function Pacific() {
     return (
         <div className="w-full flex-1 flex flex-col items-center justify-center gap-8 bg-[#fdf6e3] dark:bg-gray-900">
             <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100 cursor-default text-center">
-                Welcome to the Pacific Page
+                PACIFIC
             </h1>
+
             <p className="text-lg text-gray-600 dark:text-gray-300">
-                This is a placeholder for the Pacific page content.
+                PACIFIC is a 2-player board game originally created by the Scottish artist Sir Ian Hamilton Finlay.
+                This is a digital adaptation of the game, allowing local and online play in a web browser.
+            </p>
+
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+                SCREENSHOTS HERE
+            </p>
+
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+                LINK TO GAME HERE
             </p>
         </div>
     );
