@@ -11,7 +11,6 @@ const formats = [
 const sizes = [400, 800, 1200, 1920];
 const MAX_FILES = 1000; // safety limit
 
-// Get inputDir and outputDir from command line arguments, with defaults
 const inputDir = 'src/assets';
 const outputDir = 'public/optimized';
 

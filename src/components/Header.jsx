@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import RssTicker from './RssTicker';
+import { routes } from '../routes.jsx';
 
 const hoverAndFocusClassName = `
     flex justify-center 
@@ -31,12 +32,11 @@ export default function Header() {
                     alvarado.dev
                 </Link>
                 <nav className="flex gap-6" aria-label="Main navigation">
-                    <Link to="/" aria-label="Home" className={`w-16 ${hoverAndFocusClassName} ${headerTextClassName}`}>
-                        Home
-                    </Link>
-                    <Link to="/noah" aria-label="Noah" className={`w-16 ${hoverAndFocusClassName} ${headerTextClassName}`}>
-                        Noah
-                    </Link>
+                    {routes.map(({ path, label }) => (
+                        <Link key={path} to={path} aria-label={label} className={`w-16 ${hoverAndFocusClassName} ${headerTextClassName}`}>
+                            {label}
+                        </Link>
+                    ))}
                 </nav>
             </div>
         </header>

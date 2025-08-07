@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage.jsx';
 
-function TitleCard({ children, href, ariaLabel, target, className = '' }) {
+function TitleCard({ children, href, ariaLabel, target, className = '', image, imageAlt }) {
   const baseClasses = `
     block
     p-4
@@ -17,24 +18,28 @@ function TitleCard({ children, href, ariaLabel, target, className = '' }) {
   `;
   const pointerClass = href ? 'cursor-pointer' : '';
 
-  if (href) {
-    return (
-      <Link
-        to={href}
-        aria-label={ariaLabel}
-        target={target}
-        className={`${baseClasses} ${pointerClass}`}
-      >
-        {children}
-      </Link>
-    );
-  } else {
-    return (
-      <div className={baseClasses}>
-        {children}
-      </div>
-    );
-  }
+  return (
+    <Link
+      to={href}
+      aria-label={ariaLabel}
+      target={target}
+      className={`${baseClasses} ${pointerClass}`}
+    >
+      {image ? (
+        <div className="flex flex-col-reverse sm:!grid sm:grid-cols-2 sm:gap-4 sm:items-center">
+          <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden mt-2 sm:mt-0">
+            <OptimizedImage
+              basePath={image}
+              alt={imageAlt}
+            />
+          </div>
+          <div>
+            {children}
+          </div>
+        </div>
+      ) : children}
+    </Link>
+  );
 }
 
 export default TitleCard;

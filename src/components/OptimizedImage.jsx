@@ -2,11 +2,11 @@ import React from 'react';
 
 /**
  * OptimizedImage component for responsive, modern image delivery.
- * @param {string} basePath - The path to the base image, relative to the optimized/ directory (e.g. 'noah/noah-1')
+ * @param {string} basePath - The path to the base image, relative to the optimized/ directory (e.g. 'noah/roscoe-bikes-headshot')
  * @param {string} alt - The alt text for the image
  * @param {object} [imgProps] - Additional props for the <img> element
  */
-export default function OptimizedImage({ basePath, alt, imgProps = {}, width = '100%', height = 'auto'}) {
+export default function OptimizedImage({ basePath, alt, imgProps = {}, width = '100%', height = 'auto' }) {
   const optimizedPath = `/optimized/${basePath}`;
   const srcSet = (ext) => `
     ${optimizedPath}-400.${ext} 400w,

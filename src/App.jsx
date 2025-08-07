@@ -3,13 +3,7 @@ import './styles/App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import Header from './components/Header.jsx';
-import Landing from './pages/Landing.jsx';
-import Noah from './pages/Noah.jsx';
-
-const routes = [
-  { path: '/', element: <Landing /> },
-  { path: '/noah', element: <Noah /> },
-];
+import { routes } from './routes.jsx';
 
 function App() {
   return (
