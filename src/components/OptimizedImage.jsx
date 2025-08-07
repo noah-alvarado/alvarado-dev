@@ -15,6 +15,7 @@ export default function OptimizedImage({ basePath, alt, imgProps = {}, width = '
     <picture className={className}>
       <source type="image/webp" srcSet={srcSet('webp')} sizes={sizes} />
       <source type="image/png" srcSet={srcSet('png')} sizes={sizes} />
+      <source type="image/jpeg" srcSet={srcSet('jpeg')} sizes={sizes} />
       <img
         src={`${optimizedPath}-800.jpg`}
         srcSet={srcSet('jpg')}
