@@ -8,23 +8,11 @@ export default function Landing() {
         <div
             className={`
                 ${pageContentClassName}
-                w-full flex-1
-                flex flex-col items-center justify-center
+                justify-center
                 gap-8
                 bg-[#fdf6e3] dark:bg-gray-900
             `}
         >
-            <h1
-                className="
-                    text-3xl font-bold mb-2
-                    text-gray-900 dark:text-gray-100
-                    cursor-default
-                    text-center
-                "
-            >
-                Welcome&nbsp;to <span className="text-4xl pl-1">alvarado.dev</span>
-            </h1>
-
             <div className="flex flex-wrap items-center justify-center gap-6">
                 <TitleCard
                     href="/noah"
@@ -35,7 +23,7 @@ export default function Landing() {
                     title="Noah"
                     subtitle="Sioux Falls, SD"
                 />
-                <TitleCard
+                {/* <TitleCard
                     href="/pacific"
                     ariaLabel="Go to the PACIFIC site"
                     target="_self"
@@ -43,7 +31,7 @@ export default function Landing() {
                     imageAlt="PACIFIC Board Game"
                     title="PACIFIC"
                     subtitle="Digital Adaptation"
-                />
+                /> */}
             </div>
         </div>
     );

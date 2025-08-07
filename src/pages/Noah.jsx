@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { pageContentClassName } from '../styles/styles.js';
 import noahProfile from "../assets/noah/noah-profile.js";
 import OptimizedImage from '../components/OptimizedImage.jsx';
 import GitHubIcon from '../components/GitHubIcon.jsx';
 import PhotoGrid from '../components/PhotoGrid.jsx';
+import Cupboard from '../components/Cupboard.jsx';
+
+// Main content columns
+const contentColClass = `flex flex-col gap-4`;
 
 // Section container
 const sectionClass = `
@@ -11,19 +15,17 @@ const sectionClass = `
     bg-white/80 dark:bg-gray-900/80
     border border-gray-200 dark:border-gray-700
     rounded-3xl shadow-lg
-    p-8
+    p-6
     flex flex-col gap-4`;
 
 // Headings
 const headingClass = `
     text-2xl font-bold
     text-gray-900 dark:text-gray-100
-    mb-1
     tracking-tight`;
 const subheadingClass = `
     text-lg font-semibold
-    text-gray-700 dark:text-gray-300
-    mt-4 mb-1`;
+    text-gray-700 dark:text-gray-300`;
 
 // Labels and values
 const labelClass = `font-semibold text-gray-700 dark:text-gray-300`;
@@ -167,20 +169,11 @@ function ExperienceItem({ company, title, dates, location, details }) {
 }
 
 export default function Noah() {
-  const [showMoreExperience, setShowMoreExperience] = useState(false);
-
   return (
-    <div
-      className={`
-        ${pageContentClassName}
-        w-full flex-1
-        flex flex-col items-center justify-start
-        bg-[#e0f7fa] dark:bg-gray-800
-      `}
-    >
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className={pageContentClassName}>
+      <main className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Left Column */}
-        <div className="flex flex-col gap-8">
+        <div className={contentColClass}>
           {/* Profile Header */}
           <section className={`${sectionClass} grid grid-cols-1 sm:grid-cols-[8rem_auto] items-center gap-8`}>
             <div className="w-32 h-32 rounded-2xl bg-gray-200 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-gray-400 text-4xl select-none overflow-hidden">
@@ -222,13 +215,13 @@ export default function Noah() {
           </section>
 
           {/* Photo Feature */}
-          <section className={sectionClass}>
+          <section className={`${sectionClass} !p-2 !gap-2 !rounded-xl`}>
             <PhotoGrid photos={featuredPhotos} />
           </section>
         </div>
 
         {/* Right Column */}
-        <div className="flex flex-col gap-8">
+        <div className={contentColClass}>
           {/* Summary */}
           <section className={sectionClass}>
             <h2 className={headingClass}>About</h2>
@@ -323,7 +316,7 @@ export default function Noah() {
           {/* Education */}
           <section className={sectionClass}>
             <h2 className={headingClass}>Education</h2>
-            <div className="flex flex-col gap-2 mt-2">
+            <div className="flex flex-col gap-2">
               {noahProfile.education.map((edu, idx) => (
                 <div key={edu.school + idx} className="flex flex-col gap-1">
                   <span className={labelClass}>{edu.school}</span>
@@ -339,19 +332,11 @@ export default function Noah() {
           {/* Experience */}
           <section className={sectionClass}>
             <h2 className={headingClass}>Experience</h2>
-            <div className="flex flex-col gap-6 mt-2">
-              {noahProfile.experience
-                .slice(0, showMoreExperience ? noahProfile.experience.length : 4)
-                .map((exp, i) => (
-                  <ExperienceItem {...exp} key={i} />
-                ))}
-            </div>
-            <button
-              onClick={() => setShowMoreExperience(!showMoreExperience)}
-              className="mt-2 cursor-pointer font-semibold shadow-md hover:shadow-lg transition-all duration-200 bg-white/50 dark:bg-gray-800/50 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80"
-            >
-              {showMoreExperience ? "Show Less" : "Show More"}
-            </button>
+            <Cupboard className="flex flex-col gap-6"
+              source={noahProfile.experience}
+              cutoffIndex={4}
+              transform={(exp, i) => <ExperienceItem {...exp} key={i} />}
+            />
           </section>
         </div>
       </main>

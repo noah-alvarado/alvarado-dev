@@ -26,8 +26,8 @@ function TitleCard({ children, href, ariaLabel, target, className = '', image, i
       className={`${baseClasses} ${pointerClass}`}
     >
       {image ? (
-        <div className="flex flex-col-reverse sm:grid sm:grid-cols-2 sm:gap-4 sm:items-center">
-          <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden mt-2 sm:mt-0">
+        <div className="grid grid-cols-2 gap-4 items-center">
+          <div className="rounded-2xl border-4 border-[#c7d1e6] overflow-hidden">
             <OptimizedImage
               basePath={image}
               alt={imageAlt}
@@ -36,7 +36,6 @@ function TitleCard({ children, href, ariaLabel, target, className = '', image, i
           <div>
             <h2 className="text-2xl font-semibold">{title}</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 mt-1 italic">{subtitle}</p>
-            {children}
           </div>
         </div>
       ) : children}

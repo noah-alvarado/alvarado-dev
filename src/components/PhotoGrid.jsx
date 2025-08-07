@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import OptimizedImage from './OptimizedImage.jsx';
 import { convertRemToPixels } from "../styles/styles.js";
+import Cupboard from "./Cupboard.jsx";
 
 function spanToClasses(span) {
   let classes = '';
@@ -33,18 +34,12 @@ function photoToGridItem({ src, alt, span: { x, y } }, i) {
 }
 
 export default function PhotoGrid({ photos }) {
-  const [showMorePhotos, setShowMorePhotos] = useState(window.innerWidth >= convertRemToPixels(48));
-
   return (
-    <>
-      <div className="grid grid-cols-3 gap-2">
-        {photos.slice(0, showMorePhotos ? photos.length : 8).map(photoToGridItem)}
-      </div>
-      <button
-        onClick={() => setShowMorePhotos(!showMorePhotos)}
-        className="mt-2 cursor-pointer font-semibold shadow-md hover:shadow-lg transition-all duration-200 bg-white/50 dark:bg-gray-800/50 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80"
-      >
-        {showMorePhotos ? "Show Less" : "Show More"}
-      </button></>
+    <Cupboard source={photos}
+      cutoffIndex={8}
+      transform={photoToGridItem}
+      className="grid grid-cols-3 gap-2"
+      initialShowMore={window.innerWidth >= convertRemToPixels(64)}
+    />
   );
 }
