@@ -40,7 +40,7 @@ const noahProfile = {
     { language: "Greek", proficiency: "B2" },
     { language: "English", proficiency: "Native" }
   ],
-  summary: "I enjoy building practical software solutions and solving technical problems. With a proven history of tackling a wide range of challenges, I’m comfortable adapting to new situations and requirements. My favorite pastimes are bouldering, traveling, and spending time with my cat Finn.",
+  summary: "At work I enjoy building software and solving technical problems. I adapt to new environments by always bringing my authentic self and being open to feedback. I thrive in both independent and team-player roles by managing my time effectively and prioritizing support for others. I'm proud to be a grounded and practical person who is motivated to learn and develop new skills.",
   education: [
     {
       school: "Northwestern University",

@@ -121,7 +121,7 @@ export default function Noah() {
         <div className={contentColClass}>
           {/* Summary */}
           <section className={sectionClass}>
-            <h2 className={headingClass}>About</h2>
+            <h2 className={headingClass}>The Professional Me</h2>
             <p className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed">
               {noahProfile.summary}
             </p>
@@ -151,7 +151,7 @@ export default function Noah() {
           {/* Projects */}
           <section className={`${sectionClass} grid grid-cols-1 gap-2`}>
             <div className="col-span-full">
-              <h2 className={headingClass}>Projects</h2>
+              <h2 className={headingClass}>My Projects</h2>
             </div>
 
             {/* Project 1 */}
@@ -212,7 +212,7 @@ export default function Noah() {
 
           {/* Education */}
           <section className={sectionClass}>
-            <h2 className={headingClass}>Education</h2>
+            <h2 className={headingClass}>My Education</h2>
             <div className="flex flex-col gap-2">
               {noahProfile.education.map((edu, idx) => (
                 <div key={edu.school + idx} className="flex flex-col gap-1">
@@ -228,7 +228,7 @@ export default function Noah() {
 
           {/* Experience */}
           <section className={sectionClass}>
-            <h2 className={headingClass}>Experience</h2>
+            <h2 className={headingClass}>My Experience</h2>
             <Cupboard className="flex flex-col gap-6"
               source={noahProfile.experience}
               cutoffIndex={4}
