@@ -1,6 +1,3 @@
-import React from "react";
-
-// GitHubIcon component for accessible inline SVG icon and link
 function GitHubIcon({ href, label, className = "" }) {
     return (
         <a

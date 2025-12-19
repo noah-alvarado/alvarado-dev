@@ -1,4 +1,3 @@
-import React from "react";
 import OptimizedImage from './OptimizedImage.jsx';
 import { convertRemToPixels } from "../styles/styles.js";
 import Cupboard from "./Cupboard.jsx";

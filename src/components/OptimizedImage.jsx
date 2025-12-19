@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * OptimizedImage component for responsive, modern image delivery.
  * @param {string} basePath - The path to the base image, relative to the optimized/ directory (e.g. 'noah/roscoe-bikes-headshot')
