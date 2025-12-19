@@ -1,4 +1,3 @@
-import React from 'react';
 import { pageContentClassName } from '../styles/styles.js';
 import noahProfile from "../assets/noah/noah-profile.js";
 import featuredPhotos from '../assets/noah/featured-photos.js';
@@ -82,11 +81,11 @@ export default function Noah() {
               </p>
               <p className="flex flex-wrap gap-x-4 gap-y-1">
                 <a
-                  href="mailto:contact.noah@alvarado.dev"
+                  href={`mailto:${noahProfile.email}`}
                   aria-label="Email Noah"
                   className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
                 >
-                  contact.noah@alvarado.dev
+                  {noahProfile.email}
                 </a>
                 <span className='flex gap-4'>
                   <a

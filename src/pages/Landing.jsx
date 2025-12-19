@@ -1,5 +1,3 @@
-import React from 'react';
-import OptimizedImage from '../components/OptimizedImage.jsx';
 import TitleCard from '../components/TitleCard.jsx';
 import { pageContentClassName } from '../styles/styles.js';
 
@@ -23,15 +21,15 @@ export default function Landing() {
                     title="Noah"
                     subtitle="Sioux Falls, SD"
                 />
-                {/* <TitleCard
+                <TitleCard
                     href="/pacific"
                     ariaLabel="Go to the PACIFIC site"
                     target="_self"
                     image="pacific/spread"
                     imageAlt="PACIFIC Board Game"
                     title="PACIFIC"
-                    subtitle="Digital Adaptation"
-                /> */}
+                    subtitle="Digital Board Game Adaptation"
+                />
             </div>
         </div>
     );

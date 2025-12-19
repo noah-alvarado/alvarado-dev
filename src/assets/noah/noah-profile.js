@@ -17,6 +17,7 @@ function formatPresentExperienceDates(start) {
 
 const noahProfile = {
   name: "Noah Alvarado",
+  email: "noah@alvarado.dev",
   title: "full stack developer",
   location: "Sioux Falls, South Dakota, United States",
   contact: {

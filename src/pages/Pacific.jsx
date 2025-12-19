@@ -1,4 +1,3 @@
-import React from 'react';
 import { pageContentClassName } from '../styles/styles';
 
 export default function Pacific() {
