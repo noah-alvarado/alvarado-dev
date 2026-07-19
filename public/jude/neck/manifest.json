@@ -1,0 +1,22 @@
+{
+  "id": "neck",
+  "name": "Sample (Neck)",
+  "canvas": { "width": 1200, "height": 1500 },
+  "layers": [
+    { "id": "skin", "name": "Skin", "image": "jude/neck/skin", "order": 100, "tags": ["skin", "surface"] },
+    { "id": "scm", "name": "Sternocleidomastoid", "image": "jude/neck/scm", "order": 60, "tags": ["muscle", "scm", "lateral-neck"] },
+    { "id": "trapezius", "name": "Trapezius", "image": "jude/neck/trapezius", "order": 55, "tags": ["muscle", "trapezius", "posterior"] },
+    { "id": "nerve-cervical", "name": "Cervical plexus (nerves)", "image": "jude/neck/nerve-cervical", "order": 40, "tags": ["nerve", "cervical-plexus", "lateral-neck"] },
+    { "id": "hyoid", "name": "Hyoid bone", "image": "jude/neck/hyoid", "order": 20, "tags": ["bone", "hyoid", "anterior"] },
+    { "id": "spine", "name": "Cervical vertebrae", "image": "jude/neck/spine", "order": 10, "tags": ["bone", "vertebra", "posterior"] }
+  ],
+  "notes": [
+    { "id": "scm-oi", "title": "SCM - Origin & Insertion", "file": "/jude/neck/notes/scm-oi.pdf", "tags": ["scm", "muscle"] },
+    { "id": "scm-action", "title": "SCM - Actions & Innervation", "file": "/jude/neck/notes/scm-action.pdf", "tags": ["scm", "muscle", "nerve"] },
+    { "id": "cervical-plexus", "title": "Cervical Plexus", "file": "/jude/neck/notes/cervical-plexus.pdf", "tags": ["nerve", "cervical-plexus", "lateral-neck"] },
+    { "id": "hyoid", "title": "Hyoid Bone", "file": "/jude/neck/notes/hyoid.pdf", "tags": ["bone", "hyoid", "anterior"] },
+    { "id": "vertebrae", "title": "Cervical Vertebrae C1-C7", "file": "/jude/neck/notes/vertebrae.pdf", "tags": ["bone", "vertebra", "posterior"] },
+    { "id": "trapezius", "title": "Trapezius Regions", "file": "/jude/neck/notes/trapezius.pdf", "tags": ["muscle", "trapezius", "posterior"] }
+  ],
+  "tags": ["skin", "surface", "muscle", "scm", "lateral-neck", "trapezius", "posterior", "nerve", "cervical-plexus", "bone", "hyoid", "anterior", "vertebra"]
+}

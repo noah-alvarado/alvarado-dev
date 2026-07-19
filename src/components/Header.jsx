@@ -139,7 +139,7 @@ export default function Header() {
                     aria-label="Main navigation"
                     aria-hidden={showBurger && !navOpen}
                 >
-                    {routes.map(({ path, label }) => (
+                    {routes.filter((route) => !route.hideInNav).map(({ path, label }) => (
                         <Link
                             key={path}
                             to={path}

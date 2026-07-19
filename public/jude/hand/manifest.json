@@ -1,0 +1,19 @@
+{
+  "id": "hand",
+  "name": "Hand — Musculoskeletal (Sample)",
+  "canvas": { "width": 1200, "height": 1400 },
+  "layers": [
+    { "id": "skin", "name": "Skin", "image": "jude/hand/skin", "order": 100, "tags": ["skin", "surface"] },
+    { "id": "muscle-thenar", "name": "Thenar muscles", "image": "jude/hand/muscle-thenar", "order": 60, "tags": ["muscle", "thenar"] },
+    { "id": "tendon-extensor", "name": "Extensor tendons", "image": "jude/hand/tendon-extensor", "order": 50, "tags": ["tendon", "extensor", "dorsal"] },
+    { "id": "metacarpals", "name": "Metacarpals", "image": "jude/hand/metacarpals", "order": 20, "tags": ["bone", "metacarpal"] },
+    { "id": "carpals", "name": "Carpals", "image": "jude/hand/carpals", "order": 10, "tags": ["bone", "carpal"] }
+  ],
+  "notes": [
+    { "id": "thenar", "title": "Thenar Muscles", "file": "/jude/hand/notes/thenar.pdf", "tags": ["muscle", "thenar"] },
+    { "id": "extensor-tendons", "title": "Extensor Tendons", "file": "/jude/hand/notes/extensor-tendons.pdf", "tags": ["tendon", "extensor", "dorsal"] },
+    { "id": "metacarpals", "title": "Metacarpal Bones", "file": "/jude/hand/notes/metacarpals.pdf", "tags": ["bone", "metacarpal"] },
+    { "id": "carpals", "title": "Carpal Bones", "file": "/jude/hand/notes/carpals.pdf", "tags": ["bone", "carpal"] }
+  ],
+  "tags": ["skin", "surface", "muscle", "thenar", "tendon", "extensor", "dorsal", "bone", "metacarpal", "carpal"]
+}
