@@ -1,4 +1,4 @@
-# Image-to-Notes — Technical Architecture
+# Visually Layered Notes — Technical Architecture
 
 > Companion to [PROJECT.md](./PROJECT.md) (what the app does) and [CONTENT.md](./CONTENT.md)
 > (how to author content). This document describes the **shape of the data and resources**
@@ -40,8 +40,8 @@ public/jude/<id>/notes/*.pdf     # note documents, served as-is
 
 The manifest is **runtime JSON** (not bundled) so content is decoupled from code and can be
 edited without a rebuild. Composites are registered by id in
-`src/components/image-to-notes/useComposite.js` (`id → { url, label }`), which the route
-`/image-to-notes/:compositeId` and the on-page switcher resolve.
+`src/components/visually-layered-notes/useComposite.js` (`id → { url, label }`), which the route
+`/visually-layered-notes/:compositeId` and the on-page switcher resolve.
 
 ## 3. Manifest shape
 
@@ -124,7 +124,7 @@ matches and renders whatever `notes[].file` points to.
 
 ## 8. Composite and routing resources
 
-- `/image-to-notes` loads the default composite; `/image-to-notes/:compositeId` loads a specific
+- `/visually-layered-notes` loads the default composite; `/visually-layered-notes/:compositeId` loads a specific
   one.
 - The composite `registry` (`id → { url, label }`) is the single place a new subject is
   registered; the route and the switcher derive from it, and viewer state is keyed by composite

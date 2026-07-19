@@ -1,4 +1,4 @@
-import useImageToNotes from './useImageToNotes.js';
+import useVisuallyLayeredNotes from './useVisuallyLayeredNotes.js';
 
 const buttonClass =
     'rounded-lg border border-gray-300 dark:border-gray-600 ' +
@@ -7,7 +7,7 @@ const buttonClass =
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-200';
 
 export default function Toolbar() {
-    const { state, dispatch } = useImageToNotes();
+    const { state, dispatch } = useVisuallyLayeredNotes();
 
     return (
         <div className="flex flex-wrap items-center gap-2">

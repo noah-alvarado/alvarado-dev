@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { collectionForLayer, collectionForTags } from './tagMatch.js';
-import useImageToNotes from './useImageToNotes.js';
+import useVisuallyLayeredNotes from './useVisuallyLayeredNotes.js';
 
 // Load react-pdf / pdf.js only when a document is actually shown, keeping it out
 // of the main bundle.
@@ -12,7 +12,7 @@ const chip =
 
 // Renders one open collection: its ranked note documents plus the active PDF.
 export default function NotesTab({ collection }) {
-    const { manifest, state, dispatch } = useImageToNotes();
+    const { manifest, state, dispatch } = useVisuallyLayeredNotes();
     const notes =
         collection.source === 'layer'
             ? collectionForLayer(manifest, collection.layerId)
@@ -36,8 +36,8 @@ export default function NotesTab({ collection }) {
                                 dispatch({ type: 'SET_ACTIVE_NOTE', key: collection.key, noteId: note.id })
                             }
                             className={`${chip} ${active
-                                    ? 'bg-blue-600 text-white'
-                                    : 'bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600'
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600'
                                 }`}
                         >
                             {note.title}

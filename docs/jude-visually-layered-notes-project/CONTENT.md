@@ -1,6 +1,6 @@
-# Content guide — Image-to-Notes
+# Content guide — Visually Layered Notes
 
-How to produce, edit, and organize the content that drives the Image-to-Notes viewer:
+How to produce, edit, and organize the content that drives the Visually Layered Notes viewer:
 layer art (PNG), note documents (PDF), and the tags that connect them. For the _shape_ of
 these resources and how the application consumes them, see [ARCHITECTURE.md](./ARCHITECTURE.md).
 
@@ -53,12 +53,14 @@ references.
 2. Save it to `src/assets/jude/<composite>/<id>.png`.
 3. Run `yarn optimize-images` to generate the image variants the viewer uses.
 4. Add an entry to `layers[]` in `public/jude/<composite>/manifest.json`:
+
    ```jsonc
    { "id": "<id>", "name": "Display Name", "image": "jude/<composite>/<id>", "order": 45, "tags": ["muscle", "..."] }
    ```
 
    - `order` is the z-index: higher numbers sit nearer the viewer (skin is highest).
    - Add any brand-new tags to the top-level `tags` list as well.
+
 5. Reload the app — the structure appears in the layer panel and stacks in place.
 
 ### 2.2 Modify the content of a PDF
@@ -123,13 +125,13 @@ Field meanings and how the app uses each one are documented in
 1. Create `src/assets/jude/<id>/` (art), `public/jude/<id>/notes/` (PDFs), and
    `public/jude/<id>/manifest.json`.
 2. Add it to `registry` in
-   [useComposite.js](../../src/components/image-to-notes/useComposite.js):
+   [useComposite.js](../../src/components/visually-layered-notes/useComposite.js):
    `<id>: { url: '/jude/<id>/manifest.json', label: 'Label' }`.
-3. It is then reachable at `/image-to-notes/<id>` and appears in the on-page composite switcher.
+3. It is then reachable at `/visually-layered-notes/<id>` and appears in the on-page composite switcher.
 
 ### Storage and sample content
 
 - All content is local to the repository for now (no remote hosting).
 - The committed `neck` and `hand` composites are **placeholders**. Regenerate them with
-  `node docs/jude-image-to-notes-project/generate-sample-composites.mjs && yarn optimize-images`,
+  `node docs/jude-visually-layered-notes-project/generate-sample-composites.mjs && yarn optimize-images`,
   and replace them with real Fresco/OneNote exports for production.

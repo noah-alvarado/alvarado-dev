@@ -1,4 +1,4 @@
-// Pure tag-matching and ranking helpers for the Image-to-Notes viewer.
+// Pure tag-matching and ranking helpers for the Visually Layered Notes viewer.
 // Notes are associated to structures indirectly: a note belongs to a structure's
 // collection when their tag sets overlap, ranked by the number of shared tags.
 

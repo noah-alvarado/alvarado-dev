@@ -1,13 +1,13 @@
 import { useMemo, useReducer } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { pageContentClassName } from '../styles/styles.js';
-import ImageToNotesContext from '../components/image-to-notes/ImageToNotesContext.js';
-import useComposite, { listComposites } from '../components/image-to-notes/useComposite.js';
-import { createInitialState, makeReducer } from '../components/image-to-notes/state.js';
-import LayerStack from '../components/image-to-notes/LayerStack.jsx';
-import LayerPanel from '../components/image-to-notes/LayerPanel.jsx';
-import NotesPanel from '../components/image-to-notes/NotesPanel.jsx';
-import Toolbar from '../components/image-to-notes/Toolbar.jsx';
+import VisuallyLayeredNotesContext from '../components/visually-layered-notes/VisuallyLayeredNotesContext.js';
+import useComposite, { listComposites } from '../components/visually-layered-notes/useComposite.js';
+import { createInitialState, makeReducer } from '../components/visually-layered-notes/state.js';
+import LayerStack from '../components/visually-layered-notes/LayerStack.jsx';
+import LayerPanel from '../components/visually-layered-notes/LayerPanel.jsx';
+import NotesPanel from '../components/visually-layered-notes/NotesPanel.jsx';
+import Toolbar from '../components/visually-layered-notes/Toolbar.jsx';
 
 const panelClass =
     'rounded-2xl border border-gray-200 bg-white/70 p-3 shadow-sm dark:border-gray-700 dark:bg-gray-900/70';
@@ -20,7 +20,7 @@ function Viewer({ manifest, compositeId }) {
     const value = useMemo(() => ({ manifest, state, dispatch }), [manifest, state]);
 
     return (
-        <ImageToNotesContext.Provider value={value}>
+        <VisuallyLayeredNotesContext.Provider value={value}>
             <div className={pageContentClassName}>
                 <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
                     <header className="flex flex-col gap-3">
@@ -33,11 +33,11 @@ function Viewer({ manifest, compositeId }) {
                                         return (
                                             <Link
                                                 key={id}
-                                                to={`/image-to-notes/${id}`}
+                                                to={`/visually-layered-notes/${id}`}
                                                 aria-current={active ? 'page' : undefined}
                                                 className={`rounded-lg px-3 py-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-200 ${active
-                                                        ? 'bg-blue-600 text-white'
-                                                        : 'border border-gray-300 bg-white/70 text-gray-800 hover:bg-white dark:border-gray-600 dark:bg-gray-800/70 dark:text-gray-100 dark:hover:bg-gray-700'
+                                                    ? 'bg-blue-600 text-white'
+                                                    : 'border border-gray-300 bg-white/70 text-gray-800 hover:bg-white dark:border-gray-600 dark:bg-gray-800/70 dark:text-gray-100 dark:hover:bg-gray-700'
                                                     }`}
                                             >
                                                 {label}
@@ -62,11 +62,11 @@ function Viewer({ manifest, compositeId }) {
                     </div>
                 </div>
             </div>
-        </ImageToNotesContext.Provider>
+        </VisuallyLayeredNotesContext.Provider>
     );
 }
 
-export default function ImageToNotes() {
+export default function VisuallyLayeredNotes() {
     const { compositeId = 'neck' } = useParams();
     const { status, manifest } = useComposite(compositeId);
 

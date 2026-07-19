@@ -1,4 +1,4 @@
-// Page-scoped state for the Image-to-Notes viewer: layer visibility, isolation,
+// Page-scoped state for the Visually Layered Notes viewer: layer visibility, isolation,
 // hover/selection, open note collections (tabs), and manual tag search.
 import { collectionForLayer, collectionForTags, hasNotes } from './tagMatch.js';
 

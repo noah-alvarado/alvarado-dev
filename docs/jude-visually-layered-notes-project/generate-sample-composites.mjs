@@ -1,9 +1,9 @@
-// One-off generator for SAMPLE placeholder content for the Image-to-Notes composites:
+// One-off generator for SAMPLE placeholder content for the Visually Layered Notes composites:
 // transparent layer PNGs (via sharp) and minimal note PDFs. Data-driven — add a composite
 // to `composites` below to generate its art + notes. Replace the output with real Adobe
 // Fresco exports and OneNote PDFs when available.
 //
-//   node docs/jude-image-to-notes-project/generate-sample-composites.mjs
+//   node docs/jude-visually-layered-notes-project/generate-sample-composites.mjs
 //   yarn optimize-images
 //
 import fs from 'fs/promises';

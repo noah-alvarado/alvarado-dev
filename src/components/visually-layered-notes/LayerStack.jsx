@@ -1,12 +1,12 @@
 import { useCallback, useRef } from 'react';
 import LayerImage from './LayerImage.jsx';
 import usePickMap from './usePickMap.js';
-import useImageToNotes from './useImageToNotes.js';
+import useVisuallyLayeredNotes from './useVisuallyLayeredNotes.js';
 
 // Renders the stacked, transparent composite layers and turns pointer events into
 // structure selection/hover via the offscreen pick map.
 export default function LayerStack() {
-    const { manifest, state, dispatch } = useImageToNotes();
+    const { manifest, state, dispatch } = useVisuallyLayeredNotes();
     const containerRef = useRef(null);
     const { pick } = usePickMap({
         manifest,

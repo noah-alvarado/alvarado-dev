@@ -1,4 +1,4 @@
-import useImageToNotes from './useImageToNotes.js';
+import useVisuallyLayeredNotes from './useVisuallyLayeredNotes.js';
 
 const chip =
     'rounded-full px-2.5 py-1 text-xs font-medium ' +
@@ -7,7 +7,7 @@ const chip =
 // Manual tag search: pick from the composite's known tags; results are ranked by
 // overlap (union / ANY), matching the structure-derived collection behavior.
 export default function TagSearch() {
-    const { manifest, state, dispatch } = useImageToNotes();
+    const { manifest, state, dispatch } = useVisuallyLayeredNotes();
     const selected = state.tagSearch.selectedTags;
 
     const toggle = (tag) => {
@@ -32,8 +32,8 @@ export default function TagSearch() {
                             aria-pressed={active}
                             onClick={() => toggle(tag)}
                             className={`${chip} ${active
-                                    ? 'bg-blue-600 text-white'
-                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600'
                                 }`}
                         >
                             {tag}

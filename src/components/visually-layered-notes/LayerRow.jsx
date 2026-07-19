@@ -1,5 +1,5 @@
 import { collectionForLayer } from './tagMatch.js';
-import useImageToNotes from './useImageToNotes.js';
+import useVisuallyLayeredNotes from './useVisuallyLayeredNotes.js';
 
 const iconButton =
     'flex h-7 w-7 items-center justify-center rounded-md text-sm ' +
@@ -8,7 +8,7 @@ const iconButton =
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-200';
 
 export default function LayerRow({ layer }) {
-    const { manifest, state, dispatch } = useImageToNotes();
+    const { manifest, state, dispatch } = useVisuallyLayeredNotes();
     const layerHasNotes = collectionForLayer(manifest, layer.id).length > 0;
     const isolated = state.isolatedLayerId === layer.id;
     const isolating = Boolean(state.isolatedLayerId);

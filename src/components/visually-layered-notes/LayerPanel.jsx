@@ -1,8 +1,8 @@
 import LayerRow from './LayerRow.jsx';
-import useImageToNotes from './useImageToNotes.js';
+import useVisuallyLayeredNotes from './useVisuallyLayeredNotes.js';
 
 export default function LayerPanel() {
-    const { manifest } = useImageToNotes();
+    const { manifest } = useVisuallyLayeredNotes();
     // Top of the stack (highest order) listed first, matching what the viewer sees.
     const layers = [...manifest.layers].sort((a, b) => b.order - a.order);
 

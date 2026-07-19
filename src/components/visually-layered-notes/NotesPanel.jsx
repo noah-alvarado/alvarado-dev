@@ -1,10 +1,10 @@
 import NotesTab from './NotesTab.jsx';
 import TagSearch from './TagSearch.jsx';
-import useImageToNotes from './useImageToNotes.js';
+import useVisuallyLayeredNotes from './useVisuallyLayeredNotes.js';
 
 // Hosts open note collections as closable tabs plus the manual tag search.
 export default function NotesPanel() {
-    const { manifest, state, dispatch } = useImageToNotes();
+    const { manifest, state, dispatch } = useVisuallyLayeredNotes();
     const active = state.openCollections.find((c) => c.key === state.activeCollectionKey) ?? null;
 
     const labelFor = (collection) =>
@@ -35,8 +35,8 @@ export default function NotesPanel() {
                                 <div
                                     key={collection.key}
                                     className={`flex items-center gap-1 rounded-t-md px-2 py-1 text-sm ${isActive
-                                            ? 'bg-gray-200 font-semibold text-gray-900 dark:bg-gray-700 dark:text-gray-100'
-                                            : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                                        ? 'bg-gray-200 font-semibold text-gray-900 dark:bg-gray-700 dark:text-gray-100'
+                                        : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
                                         }`}
                                 >
                                     <button

@@ -1,4 +1,4 @@
-# Image-to-Notes — Project Requirements
+# Visually Layered Notes — Project Requirements
 
 > **Scope of this document:** product purpose, users, concepts, and behavior only.
 > Platform, frameworks, and tooling choices are intentionally left out and will be
@@ -6,7 +6,7 @@
 
 ## 1. Overview
 
-Image-to-Notes is an interactive web app, hosted at `/image-to-notes` and linked from
+Visually Layered Notes is an interactive web app, hosted at `/visually-layered-notes` and linked from
 Jude's page (`/jude`), for exploring a composite illustration built from stacked image
 layers. Clicking a layer either reveals the layers behind it or opens a collection of
 study notes surfaced for that structure.
