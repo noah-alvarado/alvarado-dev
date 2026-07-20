@@ -80,13 +80,13 @@ export default function Noah() {
                 {noahProfile.location}
               </p>
               <p className="flex flex-wrap gap-x-4 gap-y-1">
-                <a
+                {/* <a
                   href={`mailto:${noahProfile.email}`}
                   aria-label="Email Noah"
                   className="underline text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100"
                 >
-                  {noahProfile.email}
-                </a>
+                  Email Noah
+                </a> */}
                 <span className='flex gap-4'>
                   <a
                     href={noahProfile.contact.github}

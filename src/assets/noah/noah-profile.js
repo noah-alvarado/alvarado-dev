@@ -17,28 +17,26 @@ function formatPresentExperienceDates(start) {
 
 const noahProfile = {
   name: "Noah Alvarado",
-  email: "noah@alvarado.dev",
   title: "full stack developer",
-  location: "Sioux Falls, South Dakota, United States",
+  location: "Sioux Falls, SD",
   contact: {
     github: "https://github.com/noah-alvarado",
     linkedin: "https://www.linkedin.com/in/noah-alvarado"
   },
   skills: [
-    "JavaScript/TypeScript",
+    "JavaScript",
+    "TypeScript",
     "Go",
-    "AWS",
-    "Angular",
     "React",
     "Node.js",
-    "PSQL",
+    "PostgreSQL",
     "Docker",
-    "Kubernetes",
+    "AWS",
     "Azure",
     "GCP"
   ],
   languages: [
-    { language: "Greek", proficiency: "B2" },
+    { language: "Greek", proficiency: "C1" },
     { language: "English", proficiency: "Native" }
   ],
   summary: "At work I enjoy building software and solving technical problems. I adapt to new environments by always bringing my authentic self and being open to feedback. I thrive in both independent and team-player roles by managing my time effectively and prioritizing support for others. I'm proud to be a grounded and practical person who is motivated to learn and develop new skills.",
@@ -54,14 +52,14 @@ const noahProfile = {
       company: "The College Board",
       title: "Software Engineer IV",
       dates: formatPresentExperienceDates(new Date(2024, 10, 1)), // November 2024
-      location: "Remote",
+      location: "Remote (Sioux Falls, SD)",
       details: []
     },
     {
       company: "Capital One",
       title: "Software Engineer",
       dates: "December 2021 - July 2024 (2 years 8 months)",
-      location: "Chicago, Illinois, United States",
+      location: "Chicago",
       details: [
         "Back-end engineer implementing and maintaining a data aggregation pipeline.",
         "Migrating legacy Java server to a server-less architecture written in Go. Using AWS Lambda, Step Functions, Route 53, CloudWatch, ECS/EC2, and S3."
@@ -71,7 +69,7 @@ const noahProfile = {
       company: "Epsilon",
       title: "Associate Software Engineer",
       dates: "September 2020 - November 2021 (1 year 3 months)",
-      location: "Chicago, Illinois, United States",
+      location: "Chicago",
       details: [
         "Primarily front-end web developer in an Agile team of ~10 engineers.",
         "Contributed to a project used by hundreds of internal agents that contributed $100M+ to the bottom line.",
@@ -82,7 +80,7 @@ const noahProfile = {
       company: "Unfound",
       title: "Tech Team",
       dates: "April 2020 - March 2021 (1 year)",
-      location: "Chicago, Illinois, United States",
+      location: "Chicago",
       details: [
         "Leadership of the cross-platform mobile app Unfound (formerly Nooks).",
         "Implemented scalable-by-design architecture, maintained a secure cloud ecosystem, and deployed an app to multiple marketplaces.",
@@ -93,7 +91,7 @@ const noahProfile = {
       company: "Conversant",
       title: "UI/UX Intern",
       dates: "June 2019 - August 2019 (3 months)",
-      location: "Chicago, Illinois",
+      location: "Chicago",
       details: [
         "Full stack web-development of a client-facing portal using modern frontend frameworks, RESTful APIs, and Agile methodologies.",
         "Contributions to, and bug fixes for, the Conversant UI component library."
@@ -103,7 +101,7 @@ const noahProfile = {
       company: "Purple Gator",
       title: "Software Engineering Intern",
       dates: "September 2018 - June 2019 (10 months)",
-      location: "Chicago, IL",
+      location: "Chicago",
       details: [
         "Full stack web-development using AngularJS, Node.js, Express, and MongoDB.",
         "Projects: Automatic billing (Braintree) integration, interstitial marketing, Twilio, AWS S3 Buckets, Cloudfront CDN, responsive mobile UI, cache web-hosted files using IndexedDB, CSS animations."
@@ -143,7 +141,7 @@ const noahProfile = {
       company: "US Navy Hospital",
       title: "IT Intern",
       dates: "September 2015 - June 2016 (10 months)",
-      location: "Tutuhan, Guam",
+      location: "Tutuhan, GU",
       details: [
         "Customer service agent for over 500 clients, assessing problems and devising solutions or deferring to specialists.",
         "Performed routine repairs on network infrastructure and workstations.",
