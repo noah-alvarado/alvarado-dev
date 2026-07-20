@@ -17,7 +17,8 @@ const panelClass =
 //
 // `composites` powers the optional on-page switcher; pass an empty array (the
 // default) to hide it, e.g. when embedding the viewer as a preview.
-export default function Viewer({ manifest, compositeId, composites = [] }) {
+// `showAuthorLink` adds a dev-only link to the authoring UI (kept off in previews).
+export default function Viewer({ manifest, compositeId, composites = [], showAuthorLink = false }) {
     const reducer = useMemo(() => makeReducer(manifest), [manifest]);
     const [state, dispatch] = useReducer(reducer, manifest, createInitialState);
     const value = useMemo(() => ({ manifest, state, dispatch }), [manifest, state]);
@@ -29,26 +30,36 @@ export default function Viewer({ manifest, compositeId, composites = [] }) {
                     <header className="flex flex-col gap-3">
                         <div className="flex flex-wrap items-center justify-between gap-3">
                             <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{manifest.name}</h1>
-                            {composites.length > 1 && (
-                                <nav aria-label="Composites" className="flex flex-wrap gap-1">
-                                    {composites.map(({ id, label }) => {
-                                        const active = id === compositeId;
-                                        return (
-                                            <Link
-                                                key={id}
-                                                to={`/visually-layered-notes/${id}`}
-                                                aria-current={active ? 'page' : undefined}
-                                                className={`rounded-lg px-3 py-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-200 ${active
-                                                    ? 'bg-blue-600 text-white'
-                                                    : 'border border-gray-300 bg-white/70 text-gray-800 hover:bg-white dark:border-gray-600 dark:bg-gray-800/70 dark:text-gray-100 dark:hover:bg-gray-700'
-                                                    }`}
-                                            >
-                                                {label}
-                                            </Link>
-                                        );
-                                    })}
-                                </nav>
-                            )}
+                            <div className="flex flex-wrap items-center gap-2">
+                                {composites.length > 1 && (
+                                    <nav aria-label="Composites" className="flex flex-wrap gap-1">
+                                        {composites.map(({ id, label }) => {
+                                            const active = id === compositeId;
+                                            return (
+                                                <Link
+                                                    key={id}
+                                                    to={`/visually-layered-notes/${id}`}
+                                                    aria-current={active ? 'page' : undefined}
+                                                    className={`rounded-lg px-3 py-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 dark:focus-visible:ring-gray-200 ${active
+                                                        ? 'bg-blue-600 text-white'
+                                                        : 'border border-gray-300 bg-white/70 text-gray-800 hover:bg-white dark:border-gray-600 dark:bg-gray-800/70 dark:text-gray-100 dark:hover:bg-gray-700'
+                                                        }`}
+                                                >
+                                                    {label}
+                                                </Link>
+                                            );
+                                        })}
+                                    </nav>
+                                )}
+                                {showAuthorLink && (
+                                    <Link
+                                        to="/visually-layered-notes/author"
+                                        className="rounded-lg border border-dashed border-amber-400 bg-amber-50 px-3 py-1.5 text-sm font-semibold text-amber-800 hover:bg-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 dark:border-amber-500/60 dark:bg-amber-500/10 dark:text-amber-200 dark:hover:bg-amber-500/20"
+                                    >
+                                        Open author ↗
+                                    </Link>
+                                )}
+                            </div>
                         </div>
                         <Toolbar />
                     </header>

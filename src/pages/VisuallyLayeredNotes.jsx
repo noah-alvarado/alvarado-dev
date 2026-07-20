@@ -27,5 +27,13 @@ export default function VisuallyLayeredNotes() {
         );
     }
 
-    return <Viewer key={manifest.id} manifest={manifest} compositeId={compositeId} composites={composites} />;
+    return (
+        <Viewer
+            key={manifest.id}
+            manifest={manifest}
+            compositeId={compositeId}
+            composites={composites}
+            showAuthorLink={import.meta.env.DEV}
+        />
+    );
 }

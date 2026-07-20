@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { pageContentClassName } from '../styles/styles.js';
 import AuthoringContext from '../components/visually-layered-notes/authoring/AuthoringContext.js';
 import {
@@ -15,7 +16,7 @@ import NoteEditor from '../components/visually-layered-notes/authoring/NoteEdito
 import ManifestPreview from '../components/visually-layered-notes/authoring/ManifestPreview.jsx';
 import LivePreview from '../components/visually-layered-notes/authoring/LivePreview.jsx';
 import AuthoringToolbar from '../components/visually-layered-notes/authoring/AuthoringToolbar.jsx';
-import { fieldClass, labelClass } from '../components/visually-layered-notes/authoring/authoringStyles.js';
+import { buttonClass, fieldClass, labelClass } from '../components/visually-layered-notes/authoring/authoringStyles.js';
 
 const EMPTY_VALIDATION = { valid: false, errors: [], warnings: [], normalized: null };
 
@@ -133,9 +134,17 @@ export default function VisuallyLayeredNotesAuthor() {
         <div className={pageContentClassName}>
             <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
                 <header className="flex flex-col gap-1">
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                        Visually Layered Notes — Authoring
-                    </h1>
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                            Visually Layered Notes — Authoring
+                        </h1>
+                        <Link
+                            to={state.compositeId ? `/visually-layered-notes/${state.compositeId}` : '/visually-layered-notes'}
+                            className={buttonClass}
+                        >
+                            ← Back to viewer
+                        </Link>
+                    </div>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
                         Local dev tool. Edits write straight to your repo (src/assets, public/jude) and are never part
                         of the production build.
