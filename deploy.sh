@@ -2,8 +2,10 @@
 
 # deployment prerequisites
 acceptance-tests () {
-  yarn lint:fix
-  yarn audit
+  yarn lint
+  # Audit production dependencies only; dev tooling (firebase-tools, eslint, vite)
+  # is not part of the shipped bundle and generates unactionable advisory noise.
+  yarn audit --groups dependencies
   # TODO: run unit tests
   # TODO: run integration tests
 }
