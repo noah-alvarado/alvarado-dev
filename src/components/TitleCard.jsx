@@ -33,7 +33,7 @@ function TitleCard({ children, href, ariaLabel, target, className = '', image, i
             />
           </div>
           <div>
-            <h2 className="text-2xl font-semibold dark:text-gray-200">{title}</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-200">{title}</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 mt-1 italic">{subtitle}</p>
           </div>
         </div>
