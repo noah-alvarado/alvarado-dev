@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ESNext"],
+    "types": ["node"],
+    "checkJs": false,
+    "skipLibCheck": true
+  },
+  "include": ["*.js", "*.mjs"],
+  "exclude": ["node_modules", "dist", "src"]
+}

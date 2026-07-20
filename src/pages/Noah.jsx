@@ -62,8 +62,8 @@ export default function Noah() {
         {/* Left Column */}
         <div className={contentColClass}>
           {/* Profile Header */}
-          <section className={`${sectionClass} !grid !grid-cols-1 sm:!grid-cols-[8rem_auto] items-center`}>
-            <div className="w-32 h-32 rounded-2xl bg-gray-200 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center text-gray-400 text-4xl select-none overflow-hidden">
+          <section className={`${sectionClass} grid! grid-cols-1! sm:grid-cols-[8rem_auto]! items-center`}>
+            <div className="w-32 h-32 rounded-2xl bg-gray-200 dark:bg-gray-800 shrink-0 flex items-center justify-center text-gray-400 text-4xl select-none overflow-hidden">
               <OptimizedImage
                 basePath="noah/professional-headshot"
                 alt="Noah outside Roscoe Village Bikes in Chicago, wearing a purple shirt, turquoise Joshua Tree National Park tote bag, and earbuds"
@@ -111,7 +111,7 @@ export default function Noah() {
           </section>
 
           {/* Photo Feature */}
-          <section className={`${sectionClass} !p-2 !gap-2 !rounded-xl`}>
+          <section className={`${sectionClass} p-2! gap-2! rounded-xl!`}>
             <PhotoGrid photos={featuredPhotos} />
           </section>
         </div>
