@@ -3,6 +3,7 @@
 A modern React + Vite web application with Firebase Hosting and CI/CD deployment scripts.
 
 ## Features
+
 - ⚡️ Fast development with [Vite](https://vitejs.dev/)
 - ⚛️ React for UI development
 - 🎨 Tailwind CSS for styling
@@ -14,6 +15,7 @@ A modern React + Vite web application with Firebase Hosting and CI/CD deployment
 ## Getting Started
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) (v22)
 - [Yarn](https://yarnpkg.com/)
 
@@ -24,12 +26,23 @@ yarn install
 ```
 
 ### Development
+
+Start the dev server:
+
 ```bash
 yarn dev
 ```
-The app will be available at `https://localhost:2727`.
+
+Local development is served over HTTPS at `https://localhost:2727` and `https://localhost.alvarado.dev:2727`.
+
+`localhost.alvarado.dev` resolves to `127.0.0.1` via public DNS, so no local `/etc/hosts` setup is required.
+
+Locally-trusted HTTPS certificates are generated automatically via
+[vite-plugin-mkcert](https://github.com/liuweiGL/vite-plugin-mkcert); the first
+run may prompt for your password to install the local CA.
 
 ### Linting & Code Quality
+
 ```bash
 yarn lint
 # or to auto-fix
@@ -37,6 +50,7 @@ yarn lint:fix
 ```
 
 ### Building for Production
+
 ```bash
 yarn build
 ```
@@ -44,21 +58,27 @@ yarn build
 ### Deployment
 
 #### **QA/Preview:**
-  ```bash
-  yarn deploy:qa
-  ```
-  Deploys to a Firebase preview channel and prints the preview URL.
+
+```bash
+yarn deploy:qa
+```
+
+Deploys to a Firebase preview channel and prints the preview URL.
 
 #### **Production:**
-  ```bash
-  yarn deploy:prod
-  ```
-  Prompts for confirmation before deploying to production.
+
+```bash
+yarn deploy:prod
+```
+
+Prompts for confirmation before deploying to production.
 
 ### Image Optimization
+
 Optimized images are stored in `public/optimized/`. This process is automatic as a part of the build process. See [`optimize-images.mjs`](./optimize-images.mjs) for details.
 
 ## Project Structure
+
 ```
 / (root)
 ├── deploy.sh                # Deployment script
