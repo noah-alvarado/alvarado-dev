@@ -24,7 +24,7 @@ what is beneath).
 
 ## 3. Non-goals (v1)
 
-- No in-app authoring or editing UI (planned for a later phase).
+- No in-app authoring or editing UI (delivered in v2 as a local, dev-only tool — see §9).
 - No cloud hosting or sync — local files only for now.
 - No sub-region hotspots — each layer is treated as one whole structure.
 - No user accounts, sharing, or collaboration features.
@@ -123,12 +123,17 @@ Notes are **not** directly attached to individual structures. Instead:
 - **Storage:** all images, PDFs, and the manifest are local to the PC for now (no remote
   hosting).
 
-## 9. Scope: v1 vs. future
+## 9. Scope: v1 vs. v2 vs. future
 
 - **v1:** the neck composite; viewer-only; central manifest maintained by hand; local
   files; desktop and touch.
-- **Future:** an authoring UI (upload images/PDFs, assign tags, define layers, names, and
-  order); multiple selectable subjects; possibly hosted storage.
+- **v2 (current):** a local, **dev-only authoring UI** to create composites, upload layer
+  PNGs and note PDFs, assign tags, define layer order and names, preview live, and generate a
+  validated manifest — no hand-editing required. Composites are data-driven, so adding a
+  subject needs no code change. Still local files only; the viewer that ships to production is
+  unchanged.
+- **Future:** hosted storage/sync; a production (not dev-only) authoring experience; richer
+  organization for large tag/layer sets.
 
 ## 10. Design decisions
 
@@ -149,4 +154,5 @@ These defaults are adopted for v1 and can be revisited:
 - Whether structure names should be sourced from the manifest or embedded in the artwork.
 - How large numbers of layers/tags should be organized in the panel (grouping, search).
 - Whether ranked ties in the notes collection need a secondary sort (e.g., document name).
-- Migration path from the hand-maintained manifest to the future authoring UI.
+- Migration path from local, dev-only authoring to hosted storage and a production
+  authoring experience.

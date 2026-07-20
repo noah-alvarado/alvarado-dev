@@ -8,6 +8,10 @@ A **composite** (e.g., "neck") is one illustration made of stacked **layers**, w
 layer is a single structure. Each layer and each PDF carries **tags**; a structure's notes
 are the PDFs whose tags overlap its own.
 
+> **Fastest path:** use the local authoring UI (§2.1) to create composites, upload art and
+> PDFs, tag them, preview live, and generate the manifest — no hand-editing required. The
+> manual steps below remain valid for editing files directly.
+
 ## 1. Exporting source files
 
 ### 1.1 Layer art from Adobe Fresco (iPad)
@@ -41,17 +45,38 @@ Tips
 3. Produce one PDF per note document (a document may span multiple pages).
 4. Name each PDF with a short, lowercase, hyphenated **id**, e.g. `scm-origin-insertion.pdf`.
 
-## 2. Editing components and PDFs
+## 2. Building and editing a composite
 
-These are content edits — none require code changes, only the manifest and the files it
-references.
+The recommended path is the local **authoring UI**; the manual file edits it performs are
+documented after it, so you can also edit content by hand.
 
-### 2.1 Add a new component (layer) to an existing composite
+### 2.1 Authoring UI (recommended)
+
+With the dev server running (`yarn dev`), open `/visually-layered-notes/author`. It is a
+**dev-only** tool and is never part of the deployed site.
+
+- **Create a composite** — set its id, display name, and canvas size; the tool scaffolds the
+  folders, writes an initial `manifest.json`, and adds it to the composites index.
+- **Add a layer** — upload its transparent PNG (§1.1), set id/name/order, and assign tags. The
+  PNG is saved to `src/assets/jude/<id>/` and the image pipeline runs automatically for it.
+- **Add a note** — upload its PDF (§1.2) and assign tags; it is saved under
+  `public/jude/<id>/notes/`.
+- **Preview live** — an embedded viewer shows stacking, hover/click, and the tag-derived note
+  collections as you edit; each layer shows how many notes it matches (and each note, how many
+  layers).
+- **Save** — writes a validated, **normalized** `manifest.json`: image/file paths are derived
+  from ids and the top-level `tags` vocabulary is computed as the union of all tags, so you
+  never maintain it by hand.
+
+Everything below is the same content editing performed manually.
+
+### 2.2 Add a component (layer) by hand
 
 1. Draw and export the new structure as a transparent PNG (§1.1) at the same canvas size as
    the other layers.
 2. Save it to `src/assets/jude/<composite>/<id>.png`.
-3. Run `yarn optimize-images` to generate the image variants the viewer uses.
+3. Run `yarn optimize-images` to generate the image variants the viewer uses (or
+   `node optimize-images.mjs --only jude/<composite>` to process just this subject).
 4. Add an entry to `layers[]` in `public/jude/<composite>/manifest.json`:
 
    ```jsonc
@@ -63,7 +88,7 @@ references.
 
 5. Reload the app — the structure appears in the layer panel and stacks in place.
 
-### 2.2 Modify the content of a PDF
+### 2.3 Modify the content of a PDF
 
 1. Update the note in OneNote and re-export to PDF (§1.2), or edit the PDF directly.
 2. Overwrite `public/jude/<composite>/notes/<id>.pdf`, keeping the **same filename** so the
@@ -72,7 +97,7 @@ references.
 
 - If you must rename the file, update the matching `notes[].file` URL in the manifest.
 
-### 2.3 Modify the tags of a component and/or PDF
+### 2.4 Modify the tags of a component and/or PDF
 
 Edit `public/jude/<composite>/manifest.json`:
 
@@ -96,6 +121,7 @@ src/assets/jude/<id>/*.png          # SOURCE layer art you export from Fresco
 public/optimized/jude/<id>/*        # GENERATED image variants (do not edit by hand)
 public/jude/<id>/manifest.json      # the composite definition (layers, notes, tags)
 public/jude/<id>/notes/*.pdf        # note documents, served as-is
+public/jude/composites.json         # SHARED index of all composites ({ id, label })
 ```
 
 ### Manifest at a glance
@@ -122,11 +148,13 @@ Field meanings and how the app uses each one are documented in
 
 ### Registering a whole new composite (subject)
 
+Use the authoring UI's **New composite** action (§2.1) — it creates the folders, the initial
+`manifest.json`, and the index entry for you. To do it by hand instead:
+
 1. Create `src/assets/jude/<id>/` (art), `public/jude/<id>/notes/` (PDFs), and
    `public/jude/<id>/manifest.json`.
-2. Add it to `registry` in
-   [useComposite.js](../../src/components/visually-layered-notes/useComposite.js):
-   `<id>: { url: '/jude/<id>/manifest.json', label: 'Label' }`.
+2. Add a `{ "id": "<id>", "label": "Label" }` entry to the composites index at
+   [public/jude/composites.json](../../public/jude/composites.json).
 3. It is then reachable at `/visually-layered-notes/<id>` and appears in the on-page composite switcher.
 
 ### Storage and sample content

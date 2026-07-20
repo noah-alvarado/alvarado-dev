@@ -36,12 +36,14 @@ src/assets/jude/<id>/*.png       # source layer art (input to the image pipeline
 public/optimized/jude/<id>/*     # generated responsive variants consumed by the viewer
 public/jude/<id>/manifest.json   # composite definition (fetched at runtime)
 public/jude/<id>/notes/*.pdf     # note documents, served as-is
+public/jude/composites.json      # data-driven index of composites ({ id, label })
 ```
 
 The manifest is **runtime JSON** (not bundled) so content is decoupled from code and can be
-edited without a rebuild. Composites are registered by id in
-`src/components/visually-layered-notes/useComposite.js` (`id → { url, label }`), which the route
-`/visually-layered-notes/:compositeId` and the on-page switcher resolve.
+edited without a rebuild. Composites are **data-driven**: the switcher reads the runtime
+`public/jude/composites.json` index, and `useComposite` builds each manifest URL from the id
+(`/jude/<id>/manifest.json`), so the route `/visually-layered-notes/:compositeId` resolves any
+subject with no code change. See §9 for the authoring layer that writes these resources.
 
 ## 3. Manifest shape
 
@@ -126,9 +128,33 @@ matches and renders whatever `notes[].file` points to.
 
 - `/visually-layered-notes` loads the default composite; `/visually-layered-notes/:compositeId` loads a specific
   one.
-- The composite `registry` (`id → { url, label }`) is the single place a new subject is
-  registered; the route and the switcher derive from it, and viewer state is keyed by composite
-  so switching resets cleanly.
+- The composite index (`public/jude/composites.json`, a list of `{ id, label }`) is the single
+  place a new subject is listed; the switcher derives from it, `useComposite` builds the manifest
+  URL from the id, and viewer state is keyed by composite so switching resets cleanly.
 
 Implication: because `layers[].image` and `notes[].file` are URLs and the manifest is JSON,
 additional subjects — and eventually hosted content — are added as data, not code.
+
+## 9. Authoring resources (v2)
+
+The content above is produced and edited by a local **authoring UI**, reachable at
+`/visually-layered-notes/author` during `yarn dev`. It is a direct consequence of the resource
+shape: because every composite is just PNGs, PDFs, a manifest, and an index entry, a tool can
+create and edit them as data.
+
+- **Dev-only write API.** A Vite middleware (`apply: 'serve'`) mounts endpoints under
+  `/__vln-authoring` that write layer PNGs to `src/assets/jude/<id>/`, note PDFs to
+  `public/jude/<id>/notes/`, the `manifest.json`, and the `composites.json` index. It runs only
+  under the dev server and is **absent from the production build**, so the deployed site stays a
+  read-only viewer. Ids are validated and every path is constrained to those two roots.
+- **Shared schema.** One pure module (`manifestSchema.js`) validates and **normalizes** the
+  manifest for both the browser form and the server before writing: it derives each
+  `layers[].image` / `notes[].file` from ids, orders layers back-to-front, and computes the
+  top-level `tags` as the sorted union of all layer and note tags — so the vocabulary is never
+  hand-maintained.
+- **Scoped optimization.** On image upload the server runs the image pipeline scoped to the
+  edited composite (`optimizeImages({ only: 'jude/<id>' })`), so only that subtree is
+  (re)generated.
+- **Live preview.** The authoring page embeds the same viewer component, driven by the
+  in-memory draft manifest, so stacking, hit-testing, and tag-derived collections appear exactly
+  as visitors will see them.

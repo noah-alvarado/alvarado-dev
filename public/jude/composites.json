@@ -1,0 +1,12 @@
+{
+  "composites": [
+    {
+      "id": "neck",
+      "label": "Sample (Neck)"
+    },
+    {
+      "id": "hand",
+      "label": "Hand"
+    }
+  ]
+}
