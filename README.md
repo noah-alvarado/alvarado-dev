@@ -3,6 +3,7 @@
 A modern React + Vite web application with Firebase Hosting and CI/CD deployment scripts.
 
 ## Features
+
 - ⚡️ Fast development with [Vite](https://vitejs.dev/)
 - ⚛️ React for UI development
 - 🎨 Tailwind CSS for styling
@@ -14,51 +15,61 @@ A modern React + Vite web application with Firebase Hosting and CI/CD deployment
 ## Getting Started
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v22)
-- [Yarn](https://yarnpkg.com/)
+
+- [Bun](https://bun.sh/) (v1.3+)
 
 ### Installation
 
 ```sh
-yarn install
+bun install
 ```
 
 ### Development
+
 ```bash
-yarn dev
+bun run dev
 ```
+
 The app will be available at `https://localhost:2727`.
 
 ### Linting & Code Quality
+
 ```bash
-yarn lint
+bun run lint
 # or to auto-fix
-yarn lint:fix
+bun run lint:fix
 ```
 
 ### Building for Production
+
 ```bash
-yarn build
+bun run build
 ```
 
 ### Deployment
 
 #### **QA/Preview:**
-  ```bash
-  yarn deploy:qa
-  ```
-  Deploys to a Firebase preview channel and prints the preview URL.
+
+```bash
+bun run deploy:qa
+```
+
+Deploys to a Firebase preview channel and prints the preview URL.
 
 #### **Production:**
-  ```bash
-  yarn deploy:prod
-  ```
-  Prompts for confirmation before deploying to production.
+
+```bash
+bun run deploy:prod
+```
+
+Prompts for confirmation before deploying to production.
 
 ### Image Optimization
+
 Optimized images are stored in `public/optimized/`. This process is automatic as a part of the build process. See [`optimize-images.mjs`](./optimize-images.mjs) for details.
 
 ## Project Structure
+
 ```
 / (root)
 ├── deploy.sh                # Deployment script

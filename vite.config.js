@@ -16,7 +16,7 @@ export default defineConfig({
     {
       name: 'optimize-images-plugin',
       buildStart() {
-        execSync('node optimize-images.mjs', { stdio: 'inherit' });
+        execSync('bun optimize-images.mjs', { stdio: 'inherit' });
       }
     }
   ],

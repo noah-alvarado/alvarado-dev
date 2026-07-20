@@ -2,14 +2,14 @@
 
 # deployment prerequisites
 acceptance-tests () {
-  yarn lint:fix
-  yarn audit
+  bun run lint:fix
+  bun audit
   # TODO: run unit tests
   # TODO: run integration tests
 }
 
 # build and bundle app
-build-app () { yarn build; }
+build-app () { bun run build; }
 
 case $1 in
   # PROD
