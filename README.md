@@ -19,7 +19,7 @@ with infrastructure defined as code via **AWS CDK** and CI/CD through GitHub Act
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v22)
+- [Node.js](https://nodejs.org/) (v26)
 - [Yarn](https://yarnpkg.com/)
 
 ### Installation
@@ -103,21 +103,30 @@ Optimized images are stored in `public/optimized/`. This process is automatic as
 / (root)
 ├── infra/                   # AWS CDK app (S3 + CloudFront + Route 53)
 ├── scripts/                 # deploy-prod, deploy-preview, next-prod-tag
-├── .github/workflows/       # CI/CD (pr, deploy-prod, pr-cleanup)
+├── .github/
+│   ├── workflows/           # CI/CD (pr, deploy-prod, pr-cleanup)
+│   └── actions/             # stack-outputs composite action
 ├── e2e/                     # Playwright specs
 ├── optimize-images.mjs      # Image optimization script
 ├── public/                  # Static assets
 ├── src/                     # Source code
 │   ├── components/          # React components
-│   ├── pages/               # Page components
+│   ├── pages/               # Page components (one per route)
+│   ├── providers/           # Context/hooks (useTheme, useWindowWidth)
 │   ├── assets/              # Image assets
-│   └── styles/              # CSS/JS styles
+│   ├── styles/              # CSS/JS styles
+│   ├── test/                # Vitest setup
+│   └── routes.jsx           # Route table consumed by App.jsx
+├── AGENTS.md                # Guide for coding agents (also linked by CLAUDE.md)
 ├── package.json             # Project metadata and scripts
 ├── vite.config.js           # Vite config
 ├── vitest.config.js         # Unit test config
 ├── playwright.config.js     # E2e test config
 └── README.md                # This file
 ```
+
+> Working with an AI agent in this repo? See [`AGENTS.md`](./AGENTS.md).
+
 
 ## License
 

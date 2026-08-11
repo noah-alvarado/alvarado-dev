@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { routes } from '../routes.jsx';
 import useTheme from '../providers/useTheme.js';
 import useWindowWidth from '../providers/useWindowWidth.js';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const hoverAndFocusClassName = `
     flex justify-center 
@@ -80,11 +80,10 @@ export default function Header() {
 
     const showBurger = useMemo(() => windowWidth < 720, [windowWidth]);
 
-    useEffect(() => {
-        if (!showBurger) {
-            setNavOpen(false);
-        }
-    }, [showBurger]);
+    // navOpen only applies in burger mode; deriving it here avoids syncing state
+    // in an effect when the viewport crosses the breakpoint (the desktop nav is
+    // always fully shown regardless of navOpen).
+    const navExpanded = showBurger && navOpen;
 
     const handleToggleNav = () => setNavOpen((open) => !open);
     const handleNavLinkClick = () => {
@@ -101,7 +100,7 @@ export default function Header() {
            rounded-md shadow-lg
            px-4 py-3
            transition duration-200
-           ${navOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}`
+           ${navExpanded ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}`
         : 'flex gap-6 items-center';
 
     return (
@@ -122,9 +121,9 @@ export default function Header() {
                     <button
                         type="button"
                         className={burgerButtonClassName}
-                        aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                        aria-label={navExpanded ? 'Close navigation menu' : 'Open navigation menu'}
                         aria-controls="main-navigation"
-                        aria-expanded={navOpen}
+                        aria-expanded={navExpanded}
                         onClick={handleToggleNav}
                     >
                         <span aria-hidden="true" className={burgerBarClassName} />
@@ -137,7 +136,7 @@ export default function Header() {
                     id="main-navigation"
                     className={navBaseClassName}
                     aria-label="Main navigation"
-                    aria-hidden={showBurger && !navOpen}
+                    aria-hidden={showBurger && !navExpanded}
                 >
                     {routes.map(({ path, label }) => (
                         <Link

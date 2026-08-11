@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 26
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: yarn lint
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 26
           cache: yarn
       - run: yarn install --frozen-lockfile
       - uses: aws-actions/configure-aws-credentials@v4
@@ -63,7 +63,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 26
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: npx playwright install --with-deps chromium

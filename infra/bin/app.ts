@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib';
-import { DnsStack } from '../lib/dns-stack';
-import { SiteStack } from '../lib/site-stack';
+import { DnsStack } from '../lib/dns-stack.ts';
+import { SiteStack } from '../lib/site-stack.ts';
 
 const app = new cdk.App();
 
