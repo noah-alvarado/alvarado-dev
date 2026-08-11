@@ -25,3 +25,13 @@ cert
 *.njsproj
 *.sln
 *.sw?
+
+# AWS CDK
+infra/node_modules
+infra/cdk.out
+
+# Test / report output
+playwright-report
+test-results
+coverage
+*serviceaccount*.json

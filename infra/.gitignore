@@ -1,0 +1,6 @@
+node_modules/
+cdk.out/
+*.js
+!lib/preview-rewrite.js
+*.d.ts
+.cdk.staging/

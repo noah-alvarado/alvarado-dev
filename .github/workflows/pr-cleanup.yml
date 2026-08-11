@@ -1,0 +1,20 @@
+name: PR Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  id-token: write # OIDC -> AWS
+  contents: read
+
+jobs:
+  cleanup-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Remove preview objects
+        run: aws s3 rm "s3://${{ vars.PREVIEW_BUCKET }}/pr-${{ github.event.number }}" --recursive

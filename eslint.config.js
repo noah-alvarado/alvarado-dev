@@ -4,7 +4,9 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist', 'node_modules'] },
+  // infra/ is a self-contained AWS CDK app with its own tooling; its synthesized
+  // cdk.out bundles and the CloudFront Function are not linted as app code.
+  { ignores: ['dist', 'node_modules', 'infra', 'playwright-report', 'test-results', 'coverage'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -29,5 +31,10 @@ export default [
         { allowConstantExport: true },
       ],
     },
+  },
+  {
+    // Node-context config files (build/test tooling).
+    files: ['*.config.js', 'vite.config.js', 'vitest.config.js', 'playwright.config.js'],
+    languageOptions: { globals: globals.node },
   },
 ]
