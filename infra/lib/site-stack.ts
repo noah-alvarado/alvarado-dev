@@ -95,7 +95,7 @@ export class SiteStack extends cdk.Stack {
       comment: 'Host-based PR prefix + SPA fallback for previews',
       runtime: cloudfront.FunctionRuntime.JS_2_0,
       code: cloudfront.FunctionCode.fromFile({
-        filePath: path.join(__dirname, 'preview-rewrite.js'),
+        filePath: path.join(import.meta.dirname, 'preview-rewrite.js'),
       }),
     });
 

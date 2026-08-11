@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0 # need all tags to compute the next one
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 26
           cache: yarn
       - run: yarn install --frozen-lockfile
 

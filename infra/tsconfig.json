@@ -1,25 +1,20 @@
 {
+  "extends": "@tsconfig/node26/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": ["ES2020"],
-    "declaration": true,
+    // Node runs bin/app.ts directly (type-stripping), so tsc is a typecheck only
+    // and relative imports carry .ts extensions.
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    // aws-cdk-lib construct props are assigned after super(), not in the field.
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": false,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types"]
+    // Since TS 6 a bare typeRoots no longer auto-includes @types/node; keep it
+    // explicit or process/import.meta/Disposable break.
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"]
   },
   "include": ["bin/**/*.ts", "lib/**/*.ts"],
   "exclude": ["node_modules", "cdk.out"]
