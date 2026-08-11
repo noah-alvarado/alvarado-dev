@@ -158,6 +158,13 @@ export class SiteStack extends cdk.Stack {
         resources: [`arn:aws:cloudfront::${this.account}:distribution/${prodDist.distributionId}`],
       }),
     );
+    // CI reads the stack outputs (bucket / distribution ids) at deploy time.
+    deployRole.addToPolicy(
+      new iam.PolicyStatement({
+        actions: ['cloudformation:DescribeStacks'],
+        resources: [this.stackId],
+      }),
+    );
 
     // ---------- Outputs (feed these into GitHub repo variables) ----------
     new cdk.CfnOutput(this, 'ProdBucketName', { value: prodBucket.bucketName });

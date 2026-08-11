@@ -13,16 +13,37 @@ runs:
     - shell: bash
       run: |
         set -euo pipefail
+
+        # Fetch the whole stack once so an AccessDenied / missing-stack error
+        # fails this step loudly instead of silently yielding empty outputs.
+        outputs=$(aws cloudformation describe-stacks \
+          --stack-name "${{ inputs.stack-name }}" \
+          --query "Stacks[0].Outputs" --output json)
+
         get() {
-          aws cloudformation describe-stacks \
-            --stack-name "${{ inputs.stack-name }}" \
-            --query "Stacks[0].Outputs[?OutputKey=='$1'].OutputValue" \
-            --output text
+          local val
+          val=$(echo "$outputs" | jq -r --arg k "$1" \
+            '.[] | select(.OutputKey == $k) | .OutputValue')
+          if [ -z "$val" ] || [ "$val" = "null" ]; then
+            echo "::error::Stack output '$1' is missing or empty" >&2
+            return 1
+          fi
+          printf '%s' "$val"
         }
+
+        # Assign to variables first: a failing get() aborts the step here
+        # (set -e catches command-substitution failure on assignment) rather
+        # than writing an empty value that breaks a later job cryptically.
+        prod_bucket=$(get ProdBucketName)
+        prod_dist=$(get ProdDistributionId)
+        preview_bucket=$(get PreviewBucketName)
+        preview_dist=$(get PreviewDistributionId)
+        preview_domain=$(get PreviewBaseDomain)
+
         {
-          echo "PROD_BUCKET=$(get ProdBucketName)"
-          echo "PROD_DISTRIBUTION_ID=$(get ProdDistributionId)"
-          echo "PREVIEW_BUCKET=$(get PreviewBucketName)"
-          echo "PREVIEW_DISTRIBUTION_ID=$(get PreviewDistributionId)"
-          echo "PREVIEW_BASE_DOMAIN=$(get PreviewBaseDomain)"
+          echo "PROD_BUCKET=$prod_bucket"
+          echo "PROD_DISTRIBUTION_ID=$prod_dist"
+          echo "PREVIEW_BUCKET=$preview_bucket"
+          echo "PREVIEW_DISTRIBUTION_ID=$preview_dist"
+          echo "PREVIEW_BASE_DOMAIN=$preview_domain"
         } >> "$GITHUB_ENV"
