@@ -12,7 +12,6 @@ dist
 dist-ssr
 *.local
 public/optimized
-.firebase
 cert
 
 # Editor directories and files
