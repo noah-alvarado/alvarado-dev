@@ -1,0 +1,51 @@
+name: Deploy Prod
+
+on:
+  push:
+    branches: [main]
+
+# Serialize prod deploys so tag numbering is race-free.
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+permissions:
+  id-token: write # OIDC -> AWS
+  contents: write # push the release tag
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # need all tags to compute the next one
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+
+      # Compute the next tag up front, but DO NOT push it yet.
+      - id: tag
+        run: echo "tag=$(node scripts/next-prod-tag.mjs)" >> "$GITHUB_OUTPUT"
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      # Pull bucket / distribution names straight from the stack outputs.
+      - uses: ./.github/actions/stack-outputs
+
+      - name: Deploy to production
+        run: node scripts/deploy-prod.mjs
+
+      # Only on a successful deploy: publish the tag (a real, rollback-able release).
+      - name: Tag the release
+        run: |
+          TAG="${{ steps.tag.outputs.tag }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "$TAG" -m "Production release $TAG"
+          git push origin "$TAG"

@@ -100,13 +100,13 @@ Create this document at `docs/feature-github-actions/PLAN.md` (done).
 
 6. `scripts/deploy-ephemeral.mjs` — builds, runs
    `firebase hosting:channel:deploy <CHANNEL_ID|branch> --json --expires 7d
---project alvarado-dev`, parses the channel URL from the JSON result, prints
+   --project alvarado-dev`, parses the channel URL from the JSON result, prints
    it, and appends `url=<url>` to `$GITHUB_OUTPUT` when running in CI. Backs both
    `deploy:ephemeral` (local) and `deploy:ephemeral:ci`.
 7. `deploy:prod:ci` → `vite build && firebase deploy --only hosting --project
-alvarado-dev --non-interactive`.
+   alvarado-dev --non-interactive`.
 8. `scripts/next-prod-tag.mjs` — exports `computeNextTag(baseVersion,
-existingTags)`; a CLI reads `git tag -l` and prints the next tag. Reads the
+   existingTags)`; a CLI reads `git tag -l` and prints the next tag. Reads the
    base version from `package.json` (`1.0.0`), finds the max existing `1.0.0.X`,
    returns the next (`.0` if none).
 9. `package.json` updates:
@@ -127,13 +127,13 @@ existingTags)`; a CLI reads `git tag -l` and prints the next tag. Reads the
       capture the URL as a job output, and post/update a **sticky PR comment**
       with the preview link. Requires `pull-requests: write`.
     - **e2e** (`needs: deploy-ephemeral`): `npx playwright install --with-deps
-chromium`, run `E2E_BASE_URL=<url> yarn test:e2e:ci`, upload the Playwright
+      chromium`, run `E2E_BASE_URL=<url> yarn test:e2e:ci`, upload the Playwright
       report artifact on failure.
     - Per-PR `concurrency` group with `cancel-in-progress: true`.
 11. `deploy-prod.yml` (`on: push` → `main`) — see ordering below. Requires
     `contents: write` (push tag + optional Release).
 12. `pr-cleanup.yml` (`on: pull_request: types: [closed]`): `firebase
-hosting:channel:delete pr-<number> --project alvarado-dev --force` to reclaim
+    hosting:channel:delete pr-<number> --project alvarado-dev --force` to reclaim
     Spark storage.
 
 ### Prod deploy ordering — deploy first, tag on success

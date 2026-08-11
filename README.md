@@ -1,6 +1,7 @@
 # alvarado-dev
 
-A modern React + Vite web application with Firebase Hosting and CI/CD deployment scripts.
+A modern React + Vite web application hosted on **AWS** (S3 + CloudFront + Route 53),
+with infrastructure defined as code via **AWS CDK** and CI/CD through GitHub Actions.
 
 ## Features
 
@@ -8,8 +9,10 @@ A modern React + Vite web application with Firebase Hosting and CI/CD deployment
 - ⚛️ React for UI development
 - 🎨 Tailwind CSS for styling
 - 🧹 Linting with ESLint
-- 🔥 Firebase Hosting for production and preview deployments
-- 🛠️ Automated deployment script (`deploy.sh`) for QA and Production
+- 🧪 Unit tests with [Vitest](https://vitest.dev/) + e2e with [Playwright](https://playwright.dev/)
+- ☁️ AWS S3 + CloudFront hosting, provisioned with [AWS CDK](./infra)
+- 🔀 Per-PR preview environments at `pr-<n>.preview.alvarado.dev`
+- 🛠️ GitHub Actions CI/CD with keyless (OIDC) AWS auth
 - 📦 Optimized images for performance
 
 ## Getting Started
@@ -44,9 +47,14 @@ run may prompt for your password to install the local CA.
 ### Linting & Code Quality
 
 ```bash
-yarn lint
-# or to auto-fix
-yarn lint:fix
+yarn lint        # or yarn lint:fix
+```
+
+### Testing
+
+```bash
+yarn test        # unit (Vitest)
+yarn test:e2e    # e2e (Playwright) — builds + serves locally, or set E2E_BASE_URL
 ```
 
 ### Building for Production
@@ -55,25 +63,37 @@ yarn lint:fix
 yarn build
 ```
 
-### Deployment
+## Infrastructure (AWS CDK)
 
-#### **QA/Preview:**
+All AWS resources live in [`infra/`](./infra) as a TypeScript CDK app:
+
+- **`DnsStack`** — Route 53 hosted zone + email/verification records.
+- **`SiteStack`** — private S3 buckets (CloudFront OAC), ACM certs, prod + preview
+  CloudFront distributions, Route 53 aliases, and a GitHub Actions OIDC deploy role.
+
+See [`infra/README.md`](./infra/README.md) for the bootstrap + deploy runbook
+(including the one-time Route 53 nameserver cutover).
+
+## Deployment
+
+Deploys run in GitHub Actions using an OIDC-assumed IAM role (no stored AWS keys).
+Required repo **Variables**: `AWS_DEPLOY_ROLE_ARN`, `AWS_REGION`, `PROD_BUCKET`,
+`PROD_DISTRIBUTION_ID`, `PREVIEW_BUCKET`, `PREVIEW_BASE_DOMAIN` (from `SiteStack` outputs).
+
+- **Every PR** (`.github/workflows/pr.yml`): unit tests → deploy to a preview at
+  `https://pr-<n>.preview.alvarado.dev` (sticky PR comment) → Playwright e2e against it.
+- **Merge to `main`** (`.github/workflows/deploy-prod.yml`): deploy to production,
+  then tag the release `1.0.0.X` on success.
+- **PR close** (`.github/workflows/pr-cleanup.yml`): remove that PR's preview objects.
+
+Manual deploys (need AWS credentials + the same env vars):
 
 ```bash
-yarn deploy:qa
+PROD_BUCKET=... PROD_DISTRIBUTION_ID=... yarn deploy:prod
+PREVIEW_BUCKET=... PREVIEW_BASE_DOMAIN=preview.alvarado.dev PR_NUMBER=123 yarn deploy:preview
 ```
 
-Deploys to a Firebase preview channel and prints the preview URL.
-
-#### **Production:**
-
-```bash
-yarn deploy:prod
-```
-
-Prompts for confirmation before deploying to production.
-
-### Image Optimization
+## Image Optimization
 
 Optimized images are stored in `public/optimized/`. This process is automatic as a part of the build process. See [`optimize-images.mjs`](./optimize-images.mjs) for details.
 
@@ -81,7 +101,10 @@ Optimized images are stored in `public/optimized/`. This process is automatic as
 
 ```
 / (root)
-├── deploy.sh                # Deployment script
+├── infra/                   # AWS CDK app (S3 + CloudFront + Route 53)
+├── scripts/                 # deploy-prod, deploy-preview, next-prod-tag
+├── .github/workflows/       # CI/CD (pr, deploy-prod, pr-cleanup)
+├── e2e/                     # Playwright specs
 ├── optimize-images.mjs      # Image optimization script
 ├── public/                  # Static assets
 ├── src/                     # Source code
@@ -90,8 +113,9 @@ Optimized images are stored in `public/optimized/`. This process is automatic as
 │   ├── assets/              # Image assets
 │   └── styles/              # CSS/JS styles
 ├── package.json             # Project metadata and scripts
-├── tailwind.config.js       # Tailwind CSS config
 ├── vite.config.js           # Vite config
+├── vitest.config.js         # Unit test config
+├── playwright.config.js     # E2e test config
 └── README.md                # This file
 ```
 
