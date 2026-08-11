@@ -35,11 +35,11 @@ jobs:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
 
+      # Pull bucket / distribution names straight from the stack outputs.
+      - uses: ./.github/actions/stack-outputs
+
       - name: Deploy to production
         run: node scripts/deploy-prod.mjs
-        env:
-          PROD_BUCKET: ${{ vars.PROD_BUCKET }}
-          PROD_DISTRIBUTION_ID: ${{ vars.PROD_DISTRIBUTION_ID }}
 
       # Only on a successful deploy: publish the tag (a real, rollback-able release).
       - name: Tag the release

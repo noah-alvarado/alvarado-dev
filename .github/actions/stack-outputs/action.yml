@@ -1,0 +1,28 @@
+name: Load SiteStack outputs
+description: >
+  Read the CloudFormation SiteStack outputs into $GITHUB_ENV so later steps get
+  the bucket names, distribution IDs, and preview base domain without them being
+  hardcoded as repo variables. Requires AWS credentials to be configured first.
+inputs:
+  stack-name:
+    description: CloudFormation stack name to read outputs from.
+    default: SiteStack
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        set -euo pipefail
+        get() {
+          aws cloudformation describe-stacks \
+            --stack-name "${{ inputs.stack-name }}" \
+            --query "Stacks[0].Outputs[?OutputKey=='$1'].OutputValue" \
+            --output text
+        }
+        {
+          echo "PROD_BUCKET=$(get ProdBucketName)"
+          echo "PROD_DISTRIBUTION_ID=$(get ProdDistributionId)"
+          echo "PREVIEW_BUCKET=$(get PreviewBucketName)"
+          echo "PREVIEW_DISTRIBUTION_ID=$(get PreviewDistributionId)"
+          echo "PREVIEW_BASE_DOMAIN=$(get PreviewBaseDomain)"
+        } >> "$GITHUB_ENV"

@@ -42,11 +42,10 @@ jobs:
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
+      - uses: ./.github/actions/stack-outputs
       - id: deploy
         run: node scripts/deploy-preview.mjs
         env:
-          PREVIEW_BUCKET: ${{ vars.PREVIEW_BUCKET }}
-          PREVIEW_BASE_DOMAIN: ${{ vars.PREVIEW_BASE_DOMAIN }}
           PR_NUMBER: ${{ github.event.number }}
       - uses: marocchino/sticky-pull-request-comment@v2
         with:
