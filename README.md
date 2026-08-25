@@ -36,7 +36,7 @@ Start the dev server:
 yarn dev
 ```
 
-Local development is served over HTTPS at `https://localhost:2727` and `https://localhost.alvarado.dev:2727`.
+Local development is served over HTTPS at `https://localhost.alvarado.dev:2727`.
 
 `localhost.alvarado.dev` resolves to `127.0.0.1` via public DNS, so no local `/etc/hosts` setup is required.
 
@@ -77,8 +77,9 @@ See [`infra/README.md`](./infra/README.md) for the bootstrap + deploy runbook
 ## Deployment
 
 Deploys run in GitHub Actions using an OIDC-assumed IAM role (no stored AWS keys).
-Required repo **Variables**: `AWS_DEPLOY_ROLE_ARN`, `AWS_REGION`, `PROD_BUCKET`,
-`PROD_DISTRIBUTION_ID`, `PREVIEW_BUCKET`, `PREVIEW_BASE_DOMAIN` (from `SiteStack` outputs).
+Required repo **Variables**: `AWS_DEPLOY_ROLE_ARN` and `AWS_REGION` only — the
+deploy scripts read buckets/distribution IDs from `SiteStack` CloudFormation
+outputs at runtime via the [`stack-outputs` action](./.github/actions/stack-outputs).
 
 - **Every PR** (`.github/workflows/pr.yml`): unit tests → deploy to a preview at
   `https://pr-<n>.preview.alvarado.dev` (sticky PR comment) → Playwright e2e against it.
@@ -86,7 +87,8 @@ Required repo **Variables**: `AWS_DEPLOY_ROLE_ARN`, `AWS_REGION`, `PROD_BUCKET`,
   then tag the release `1.0.0.X` on success.
 - **PR close** (`.github/workflows/pr-cleanup.yml`): remove that PR's preview objects.
 
-Manual deploys (need AWS credentials + the same env vars):
+Manual deploys (need AWS credentials for account `034083889387` in `us-east-1`,
+plus the same env vars the CI action loads from stack outputs):
 
 ```bash
 PROD_BUCKET=... PROD_DISTRIBUTION_ID=... yarn deploy:prod
