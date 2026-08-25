@@ -1,10 +1,8 @@
-// Noah Alvarado profile data as a JS map
-
 function formatPresentExperienceDates(start) {
   const end = new Date();
   let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
   if (end.getDate() < start.getDate()) months--;
-  months = Math.max(0, months); // Prevent negative
+  months = Math.max(0, months);
   const years = Math.floor(months / 12);
   const remMonths = months % 12;
   let str = `${start.toLocaleString('default', { month: 'long' })} ${start.getFullYear()} - Present (`;
@@ -45,6 +43,49 @@ const noahProfile = {
       school: "Northwestern University",
       degree: "Bachelor of Science - BS, Computer Science",
       dates: "2016 - 2020"
+    }
+  ],
+  projects: [
+    {
+      name: "Personal Portfolio Website (This Website!)",
+      description: "Modern, responsive portfolio built with React and Tailwind CSS",
+      github: {
+        href: "https://github.com/noah-alvarado/alvarado-dev",
+        label: "Source code for this website on GitHub"
+      },
+      details: [
+        "Designed and developed a performant, accessible personal website",
+        "React, Vite, Tailwind CSS, optimized images, responsive, dark mode support"
+      ]
+    },
+    {
+      name: "PACIFIC",
+      description: "Two-player WWII board game by Sir Ian Hamilton Finlay",
+      github: {
+        href: "https://github.com/noah-alvarado/pacific",
+        label: "Source code for PACIFIC on GitHub"
+      },
+      details: [
+        "Research, playtesting, and digital adaptation of a artist's board game",
+        "Interactive layer built in SolidJS + TypeScript",
+        "P2P game sessions via direct WebRTC play or a Go-based centralized service"
+      ]
+    },
+    {
+      name: "Data Aggregation Pipeline (Capital One)",
+      description: "Serverless data pipeline migration and modernization",
+      details: [
+        "Back-end engineer for a high-throughput data pipeline",
+        "Go, AWS Lambda, Step Functions, S3, ECS, CloudWatch"
+      ]
+    },
+    {
+      name: "Unfound (formerly Nooks)",
+      description: "Cross-platform mobile app for finding and booking study spaces",
+      details: [
+        "Leadership of the tech team, deployed to multiple marketplaces",
+        "React Native, Node.js, TypeScript, PostgreSQL, AWS, Docker"
+      ]
     }
   ],
   experience: [

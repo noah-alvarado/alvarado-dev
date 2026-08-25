@@ -32,11 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 26
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      - uses: ./.github/actions/setup
       - run: yarn lint
       - run: yarn test
 
@@ -47,11 +43,7 @@ jobs:
       url: ${{ steps.deploy.outputs.url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 26
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      - uses: ./.github/actions/setup
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
@@ -75,11 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 26
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      - uses: ./.github/actions/setup
       - run: npx playwright install --with-deps chromium
       - run: yarn test:e2e
         env:

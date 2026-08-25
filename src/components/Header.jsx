@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { routes } from '../routes.jsx';
-import useTheme from '../providers/useTheme.js';
-import useWindowWidth from '../providers/useWindowWidth.js';
-import { useMemo, useState } from 'react';
+import useTheme from '../hooks/useTheme.js';
+import useWindowWidth from '../hooks/useWindowWidth.js';
+import { useState } from 'react';
 
 const hoverAndFocusClassName = `
     flex justify-center 
@@ -67,7 +67,6 @@ const ThemeToggle = () => {
             }
             onClick={toggleDarkMode}
             className={themeToggleClassName}
-        // class={`${styles.themeToggle} ${styles.clickable}`}
         >
             {theme === "dark" ? "🌙" : "☀️"}
         </button>
@@ -78,7 +77,7 @@ export default function Header() {
     const windowWidth = useWindowWidth();
     const [navOpen, setNavOpen] = useState(false);
 
-    const showBurger = useMemo(() => windowWidth < 720, [windowWidth]);
+    const showBurger = windowWidth < 720;
 
     // navOpen only applies in burger mode; deriving it here avoids syncing state
     // in an effect when the viewport crosses the breakpoint (the desktop nav is

@@ -1,0 +1,13 @@
+name: Setup Node + dependencies
+description: >
+  Install Node 26 with yarn cache enabled and run yarn install
+  --frozen-lockfile. Run actions/checkout before this action.
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 26
+        cache: yarn
+    - run: yarn install --frozen-lockfile
+      shell: bash

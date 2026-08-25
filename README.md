@@ -84,7 +84,7 @@ outputs at runtime via the [`stack-outputs` action](./.github/actions/stack-outp
 - **Every PR** (`.github/workflows/pr.yml`): unit tests → deploy to a preview at
   `https://pr-<n>.preview.alvarado.dev` (sticky PR comment) → Playwright e2e against it.
 - **Merge to `main`** (`.github/workflows/deploy-prod.yml`): deploy to production,
-  then tag the release `1.0.0.X` on success.
+  then tag the release `release-<short-sha>` on success.
 - **PR close** (`.github/workflows/pr-cleanup.yml`): remove that PR's preview objects.
 
 Manual deploys (need AWS credentials for account `034083889387` in `us-east-1`,
@@ -104,17 +104,17 @@ Optimized images are stored in `public/optimized/`. This process is automatic as
 ```
 / (root)
 ├── infra/                   # AWS CDK app (S3 + CloudFront + Route 53)
-├── scripts/                 # deploy-prod, deploy-preview, next-prod-tag
+├── scripts/                 # deploy-prod, deploy-preview
 ├── .github/
 │   ├── workflows/           # CI/CD (pr, deploy-prod, pr-cleanup)
-│   └── actions/             # stack-outputs composite action
+│   └── actions/             # composite actions (setup, stack-outputs)
 ├── e2e/                     # Playwright specs
 ├── optimize-images.mjs      # Image optimization script
 ├── public/                  # Static assets
 ├── src/                     # Source code
 │   ├── components/          # React components
 │   ├── pages/               # Page components (one per route)
-│   ├── providers/           # Context/hooks (useTheme, useWindowWidth)
+│   ├── hooks/               # Hooks (useTheme, useWindowWidth)
 │   ├── assets/              # Image assets
 │   ├── styles/              # CSS/JS styles
 │   ├── test/                # Vitest setup

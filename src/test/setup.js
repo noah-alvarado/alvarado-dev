@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-// jsdom has no matchMedia; useTheme (src/providers/useTheme.js) relies on it.
+// jsdom has no matchMedia; useTheme (src/hooks/useTheme.js) relies on it.
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: (query) => ({

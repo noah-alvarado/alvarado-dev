@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
 // Against the ephemeral preview when E2E_BASE_URL is set (CI); otherwise a local
-// `vite preview` build. The local server is only started in the latter case.
+// `vite preview` build (plain HTTP — see preview config in vite.config.js).
+// The local server is only started in the latter case.
 const baseURL = process.env.E2E_BASE_URL || 'http://localhost:4173';
 
 export default defineConfig({
