@@ -13,7 +13,7 @@
     "lint:fix": "eslint --fix .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test",
+    "test:e2e": "node scripts/run-e2e.mjs",
     "optimize-images": "node optimize-images.mjs",
     "deploy:preview": "node scripts/deploy-preview.mjs",
     "deploy:prod": "node scripts/deploy-prod.mjs"

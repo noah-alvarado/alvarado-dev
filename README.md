@@ -54,8 +54,12 @@ yarn lint        # or yarn lint:fix
 
 ```bash
 yarn test        # unit (Vitest)
-yarn test:e2e    # e2e (Playwright) — builds + serves locally, or set E2E_BASE_URL
+yarn test:e2e    # e2e (Playwright) — builds + serves locally over HTTPS, or set E2E_BASE_URL
 ```
+
+Local e2e serves over HTTPS using the same mkcert certificates as the dev
+server; run `yarn dev` once first if you haven't, so the certificates are
+provisioned.
 
 ### Building for Production
 

@@ -94,6 +94,11 @@ See [`infra/README.md`](./infra/README.md) for the bootstrap + deploy runbook.
 - Dev is served over **HTTPS** at `https://localhost.alvarado.dev:2727`
   (`localhost.alvarado.dev` resolves to `127.0.0.1` via public DNS; certs via
   `vite-plugin-mkcert`). First run may prompt for a password to install the CA.
+- Local e2e is also **HTTPS**: `vite preview` inherits the mkcert certs.
+  `yarn test:e2e` runs through `scripts/run-e2e.mjs`, which exports
+  `NODE_EXTRA_CA_CERTS` pointing at the mkcert CA so Playwright's webServer
+  readiness probe (plain TLS, no skip option) can verify the cert. On a fresh
+  machine run `yarn dev` once first to provision certificates.
 - The **prod S3 bucket is `RETAIN`** on stack delete (safety); the preview bucket
   is `DESTROY` with auto-delete + 30-day expiry.
 - **Known, accepted vuln**: `aws-cdk-lib` bundles a vulnerable `brace-expansion`

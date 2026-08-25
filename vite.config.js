@@ -21,13 +21,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
     mkcert({ hosts: [HOST] }),
-    // mkcert turns HTTPS on for `vite preview` too; Playwright's local e2e
-    // webServer can't health-check its self-signed cert, so keep preview
-    // plain HTTP. Must come after mkcert to win the config merge.
-    {
-      name: 'http-preview',
-      config: () => ({ preview: { https: false } }),
-    },
     {
       name: 'optimize-images-plugin',
       buildStart() {
