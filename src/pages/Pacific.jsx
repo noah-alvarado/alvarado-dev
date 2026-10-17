@@ -18,6 +18,7 @@ const features = [
     "Local games on one device, with undo, redo, and board rotation",
     "Online games against a friend over a direct peer-to-peer (WebRTC) connection, no account needed",
     "A full transcription of the original Type A and Type B rules, with figures",
+    "Piece icons and logo hand-drawn by me, reproduced from the original game",
     "Light and dark themes, and a layout that fits phones through desktops",
 ];
 
