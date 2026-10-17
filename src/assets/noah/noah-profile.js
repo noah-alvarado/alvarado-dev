@@ -66,9 +66,9 @@ const noahProfile = {
         label: "Source code for PACIFIC on GitHub"
       },
       details: [
-        "Research, playtesting, and digital adaptation of a artist's board game",
-        "Interactive layer built in SolidJS + TypeScript",
-        "P2P game sessions via direct WebRTC play or a Go-based centralized service"
+        "Research, playtesting, and digital adaptation of an artist's board game",
+        "Interactive layer built in SolidJS + TypeScript, with Vitest and Playwright test suites",
+        "Online play over peer-to-peer WebRTC (Trystero); hosted on AWS with CDK, PR previews, and automated releases"
       ]
     },
     {
