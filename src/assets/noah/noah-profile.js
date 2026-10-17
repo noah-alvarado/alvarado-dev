@@ -60,7 +60,7 @@ const noahProfile = {
     },
     {
       name: "PACIFIC",
-      description: "Two-player WWII board game by Sir Ian Hamilton Finlay",
+      description: "Two-player WWII board game by Ian Hamilton Finlay",
       github: {
         href: "https://github.com/noah-alvarado/pacific",
         label: "Source code for PACIFIC on GitHub"
