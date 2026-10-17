@@ -36,7 +36,7 @@ Start the dev server:
 yarn dev
 ```
 
-Local development is served over HTTPS at `https://localhost:2727` and `https://localhost.alvarado.dev:2727`.
+Local development is served over HTTPS at `https://localhost.alvarado.dev:2727`.
 
 `localhost.alvarado.dev` resolves to `127.0.0.1` via public DNS, so no local `/etc/hosts` setup is required.
 
@@ -54,8 +54,12 @@ yarn lint        # or yarn lint:fix
 
 ```bash
 yarn test        # unit (Vitest)
-yarn test:e2e    # e2e (Playwright) — builds + serves locally, or set E2E_BASE_URL
+yarn test:e2e    # e2e (Playwright) — builds + serves locally over HTTPS, or set E2E_BASE_URL
 ```
+
+Local e2e serves over HTTPS using the same mkcert certificates as the dev
+server; run `yarn dev` once first if you haven't, so the certificates are
+provisioned.
 
 ### Building for Production
 
@@ -77,16 +81,18 @@ See [`infra/README.md`](./infra/README.md) for the bootstrap + deploy runbook
 ## Deployment
 
 Deploys run in GitHub Actions using an OIDC-assumed IAM role (no stored AWS keys).
-Required repo **Variables**: `AWS_DEPLOY_ROLE_ARN`, `AWS_REGION`, `PROD_BUCKET`,
-`PROD_DISTRIBUTION_ID`, `PREVIEW_BUCKET`, `PREVIEW_BASE_DOMAIN` (from `SiteStack` outputs).
+Required repo **Variables**: `AWS_DEPLOY_ROLE_ARN` and `AWS_REGION` only — the
+deploy scripts read buckets/distribution IDs from `SiteStack` CloudFormation
+outputs at runtime via the [`stack-outputs` action](./.github/actions/stack-outputs).
 
 - **Every PR** (`.github/workflows/pr.yml`): unit tests → deploy to a preview at
   `https://pr-<n>.preview.alvarado.dev` (sticky PR comment) → Playwright e2e against it.
 - **Merge to `main`** (`.github/workflows/deploy-prod.yml`): deploy to production,
-  then tag the release `1.0.0.X` on success.
+  then tag the release `release-<short-sha>` on success.
 - **PR close** (`.github/workflows/pr-cleanup.yml`): remove that PR's preview objects.
 
-Manual deploys (need AWS credentials + the same env vars):
+Manual deploys (need AWS credentials for account `034083889387` in `us-east-1`,
+plus the same env vars the CI action loads from stack outputs):
 
 ```bash
 PROD_BUCKET=... PROD_DISTRIBUTION_ID=... yarn deploy:prod
@@ -102,17 +108,17 @@ Optimized images are stored in `public/optimized/`. This process is automatic as
 ```
 / (root)
 ├── infra/                   # AWS CDK app (S3 + CloudFront + Route 53)
-├── scripts/                 # deploy-prod, deploy-preview, next-prod-tag
+├── scripts/                 # deploy-prod, deploy-preview
 ├── .github/
 │   ├── workflows/           # CI/CD (pr, deploy-prod, pr-cleanup)
-│   └── actions/             # stack-outputs composite action
+│   └── actions/             # composite actions (setup, stack-outputs)
 ├── e2e/                     # Playwright specs
 ├── optimize-images.mjs      # Image optimization script
 ├── public/                  # Static assets
 ├── src/                     # Source code
 │   ├── components/          # React components
 │   ├── pages/               # Page components (one per route)
-│   ├── providers/           # Context/hooks (useTheme, useWindowWidth)
+│   ├── hooks/               # Hooks (useTheme, useWindowWidth)
 │   ├── assets/              # Image assets
 │   ├── styles/              # CSS/JS styles
 │   ├── test/                # Vitest setup

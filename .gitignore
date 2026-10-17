@@ -34,3 +34,4 @@ playwright-report
 test-results
 coverage
 *serviceaccount*.json
+.aider*

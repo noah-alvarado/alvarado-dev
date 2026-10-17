@@ -5,7 +5,3 @@ export const pageContentClassName = `
     items-center
     bg-[#e0f7fa] dark:bg-gray-800
 `;
-
-export function convertRemToPixels(rem) {    
-    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-}

@@ -43,17 +43,18 @@ be authoritative (nameservers cut over) **before** `SiteStack` can finish deploy
    npm run deploy:site
    ```
 
-4. **Wire GitHub Actions** — copy `SiteStack` outputs into repo **Variables**
+4. **Wire GitHub Actions** — add repo **Variables**
    (Settings → Secrets and variables → Actions → Variables):
 
-   | Repo variable            | From output / value      |
-   | ------------------------ | ------------------------ |
-   | `AWS_DEPLOY_ROLE_ARN`    | `GitHubDeployRoleArn`    |
-   | `AWS_REGION`             | `us-east-1`              |
-   | `PROD_BUCKET`            | `ProdBucketName`         |
-   | `PROD_DISTRIBUTION_ID`   | `ProdDistributionId`     |
-   | `PREVIEW_BUCKET`         | `PreviewBucketName`      |
-   | `PREVIEW_BASE_DOMAIN`    | `PreviewBaseDomain`      |
+   | Repo variable         | Value                 |
+   | --------------------- | --------------------- |
+   | `AWS_DEPLOY_ROLE_ARN` | `GitHubDeployRoleArn` |
+   | `AWS_REGION`          | `us-east-1`           |
+
+   Bucket names, distribution IDs, and the preview base domain are read at
+   runtime from `SiteStack` CloudFormation outputs by the
+   [`stack-outputs` action](../.github/actions/stack-outputs/action.yml) — no
+   need to copy them into repo variables.
 
 ## Notes
 

@@ -6,6 +6,10 @@ function getPreferredTheme() {
         : "light";
 };
 
+// Class-based dark mode: toggling `dark` on <html> drives the
+// @custom-variant in src/styles/App.css. The inline script in index.html
+// applies the same logic before React loads to avoid a flash — keep the
+// three in sync.
 export default function useTheme() {
     const [theme, _setTheme] = useState(localStorage.getItem("theme") ?? getPreferredTheme());
 
@@ -14,14 +18,8 @@ export default function useTheme() {
     }, [theme]);
 
     const setTheme = (newTheme) => {
-        if (theme) {
-            _setTheme(newTheme);
-            localStorage.setItem("theme", newTheme);
-        } else {
-            const preferredTheme = getPreferredTheme();
-            _setTheme(preferredTheme);
-            localStorage.removeItem("theme");
-        }
+        _setTheme(newTheme);
+        localStorage.setItem("theme", newTheme);
     };
 
     return [theme, setTheme];

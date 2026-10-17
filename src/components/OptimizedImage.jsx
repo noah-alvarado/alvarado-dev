@@ -1,6 +1,9 @@
 /**
- * OptimizedImage component for responsive, modern image delivery.
- * @param {string} basePath - The path to the base image, relative to the optimized/ directory (e.g. 'noah/roscoe-bikes-headshot')
+ * Responsive, modern image delivery for images optimized by optimize-images.mjs.
+ * basePath must match a source image under src/assets (e.g. 'noah/professional-headshot'
+ * for src/assets/noah/professional-headshot.jpg); this component emits srcSet
+ * entries for every width that optimize-images.mjs generates (-400/-800/-1200/-1920).
+ * @param {string} basePath - Source image path relative to src/assets, without extension
  * @param {string} alt - The alt text for the image
  * @param {object} [imgProps] - Additional props for the <img> element
  */

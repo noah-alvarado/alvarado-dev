@@ -1,11 +1,9 @@
 @import "tailwindcss";
-@tailwind utilities;
 
+/* Class-based dark mode: `dark:` utilities apply when <html> has the `dark`
+   class, which src/hooks/useTheme.js and the inline script in index.html
+   toggle. */
 @custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
-    --breakpoint-xs: 32rem;
-}
 
 #root {
     min-width: 100vw;

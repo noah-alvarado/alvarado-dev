@@ -8,12 +8,14 @@ import tailwindcss from '@tailwindcss/vite'
 // (localhost.alvarado.dev resolves to 127.0.0.1 via public DNS — no /etc/hosts needed).
 const HOST = 'localhost.alvarado.dev'
 
-// https://vite.dev/config/
 export default defineConfig({
   server: {
     host: HOST,
     port: 2727,
     allowedHosts: [HOST],
+  },
+  preview: {
+    port: 4173,
   },
   plugins: [
     react(),

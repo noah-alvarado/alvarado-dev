@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
 
-# Serialize prod deploys so tag numbering is race-free.
+# Serialize prod deploys so concurrent merges can't interleave S3 syncs.
 concurrency:
   group: deploy-prod
   cancel-in-progress: false
@@ -17,20 +17,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # need all tags to compute the next one
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 26
-          cache: yarn
-      - run: yarn install --frozen-lockfile
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
 
-      # Compute the next tag up front, but DO NOT push it yet.
-      - id: tag
-        run: echo "tag=$(node scripts/next-prod-tag.mjs)" >> "$GITHUB_OUTPUT"
-
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
@@ -41,11 +31,11 @@ jobs:
       - name: Deploy to production
         run: node scripts/deploy-prod.mjs
 
-      # Only on a successful deploy: publish the tag (a real, rollback-able release).
+      # Only on a successful deploy: tag the release (a real, rollback-able point).
       - name: Tag the release
         run: |
-          TAG="${{ steps.tag.outputs.tag }}"
+          TAG="release-${GITHUB_SHA::7}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "$TAG" -m "Production release $TAG"
+          git tag -a "$TAG" -m "Production release of $GITHUB_SHA"
           git push origin "$TAG"

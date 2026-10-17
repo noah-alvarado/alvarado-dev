@@ -39,7 +39,7 @@ Infra (run from `infra/`, npm):
 - **Routing**: routes are declared in `src/routes.jsx` and rendered by
   `src/App.jsx`. Add a page by creating `src/pages/<Name>.jsx` and appending an
   entry to the `routes` array — `App.jsx` maps over it, so nothing else changes.
-- **Providers/hooks**: `src/providers/` (`useTheme`, `useWindowWidth`).
+- **Hooks**: `src/hooks/` (`useTheme`, `useWindowWidth`) — plain hooks, no React context.
 - **Styling**: Tailwind v4 via `@tailwindcss/vite`; extra CSS/JS style helpers in
   `src/styles/`.
 - **Images**: `optimize-images.mjs` (Sharp) writes to `public/optimized/` and runs
@@ -78,12 +78,15 @@ See [`infra/README.md`](./infra/README.md) for the bootstrap + deploy runbook.
 
 ## CI/CD (`.github/`)
 
-- `workflows/pr.yml` — lint + unit → deploy PR preview → Playwright e2e vs preview.
+- `workflows/pr.yml` — infra typecheck + lint/unit (parallel) → deploy PR preview →
+  Playwright e2e vs preview. Shared Node/yarn setup lives in `actions/setup/`.
 - `workflows/deploy-prod.yml` — on merge to `main`: deploy prod, then tag
-  `1.0.0.X` on success (`scripts/next-prod-tag.mjs`).
+  `release-<short-sha>` on success.
 - `workflows/pr-cleanup.yml` — remove a PR's preview objects on close.
 - `actions/stack-outputs/` — composite action that loads `SiteStack` outputs
   (bucket/distribution names) into the job env, so they aren't hardcoded.
+- `actions/setup/` — composite action (Node 26 + yarn install) shared by jobs
+  that need the root app toolchain; run `actions/checkout@v4` first.
 - Deploy scripts: `scripts/deploy-prod.mjs`, `scripts/deploy-preview.mjs`.
 
 ## Gotchas & conventions
@@ -91,6 +94,11 @@ See [`infra/README.md`](./infra/README.md) for the bootstrap + deploy runbook.
 - Dev is served over **HTTPS** at `https://localhost.alvarado.dev:2727`
   (`localhost.alvarado.dev` resolves to `127.0.0.1` via public DNS; certs via
   `vite-plugin-mkcert`). First run may prompt for a password to install the CA.
+- Local e2e is also **HTTPS**: `vite preview` inherits the mkcert certs.
+  `yarn test:e2e` runs through `scripts/run-e2e.mjs`, which exports
+  `NODE_EXTRA_CA_CERTS` pointing at the mkcert CA so Playwright's webServer
+  readiness probe (plain TLS, no skip option) can verify the cert. On a fresh
+  machine run `yarn dev` once first to provision certificates.
 - The **prod S3 bucket is `RETAIN`** on stack delete (safety); the preview bucket
   is `DESTROY` with auto-delete + 30-day expiry.
 - **Known, accepted vuln**: `aws-cdk-lib` bundles a vulnerable `brace-expansion`

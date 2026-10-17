@@ -1,6 +1,5 @@
 import OptimizedImage from './OptimizedImage.jsx';
-import { convertRemToPixels } from "../styles/styles.js";
-import Cupboard from "./Cupboard.jsx";
+import ExpandableList from "./ExpandableList.jsx";
 
 function spanToClasses(span) {
   let classes = '';
@@ -34,11 +33,11 @@ function photoToGridItem({ src, alt, span: { x, y } }, i) {
 
 export default function PhotoGrid({ photos }) {
   return (
-    <Cupboard source={photos}
+    <ExpandableList source={photos}
       cutoffIndex={8}
       transform={photoToGridItem}
       className="grid grid-cols-3 gap-2"
-      initialShowMore={window.innerWidth >= convertRemToPixels(64)}
+      initialShowMore={window.innerWidth >= 1024} // lg breakpoint (64rem)
     />
   );
 }
