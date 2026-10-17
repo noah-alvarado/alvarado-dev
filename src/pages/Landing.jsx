@@ -1,3 +1,4 @@
+import { PacificWordmark } from '../components/PacificLogo.jsx';
 import TitleCard from '../components/TitleCard.jsx';
 import { pageContentClassName } from '../styles/styles.js';
 
@@ -27,8 +28,8 @@ export default function Landing() {
                     target="_self"
                     image="pacific/spread"
                     imageAlt="PACIFIC Board Game"
-                    title="PACIFIC"
-                    subtitle="Digital Board Game Adaptation"
+                    title={<PacificWordmark />}
+                    subtitle="Board Wargame for 2 Players"
                 />
             </div>
         </div>
