@@ -1,7 +1,7 @@
 import OptimizedImage from '../components/OptimizedImage';
 import { pageContentClassName } from '../styles/styles';
 
-const pacificUrl = "https://noah-alvarado.github.io/pacific/";
+const pacificUrl = "https://pacific.alvarado.dev";
 
 const screenshotPaths = [
     "pacific/ss1",
