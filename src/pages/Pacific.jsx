@@ -43,19 +43,25 @@ export default function Pacific() {
                 </p>
             </header>
 
-            <div className="flex flex-wrap justify-center gap-4">
-                <a
-                    href={pacificUrl}
-                    className={`${buttonClassName} border-transparent bg-[#89cff0] hover:bg-[#5fb8e6] text-[#1c1724] shadow-md`}
-                >
-                    Play PACIFIC
-                </a>
-                <a
-                    href={rulesUrl}
-                    className={`${buttonClassName} border-current text-gray-900 dark:text-gray-100 hover:bg-gray-500/15`}
-                >
-                    Game Rules
-                </a>
+            <div className="flex flex-col items-center gap-3">
+                <div className="flex flex-wrap justify-center gap-4">
+                    <a
+                        href={pacificUrl}
+                        className={`${buttonClassName} border-transparent bg-[#89cff0] hover:bg-[#5fb8e6] text-[#1c1724] shadow-md`}
+                    >
+                        Play PACIFIC
+                    </a>
+                    <a
+                        href={rulesUrl}
+                        className={`${buttonClassName} border-current text-gray-900 dark:text-gray-100 hover:bg-gray-500/15`}
+                    >
+                        Game Rules
+                    </a>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
+                    <a href={sourceUrl} className={linkClassName}>Source on GitHub</a>
+                    {" · "}Licensed CC BY-NC-SA 4.0
+                </p>
             </div>
 
             <section className="flex flex-col gap-4 max-w-prose">
@@ -106,11 +112,6 @@ export default function Pacific() {
                     <Screenshot name="rules" alt="The PACIFIC rules page" caption="Rules" />
                 </div>
             </section>
-
-            <p className="text-sm text-gray-600 dark:text-gray-400 text-center mb-4">
-                <a href={sourceUrl} className={linkClassName}>Source on GitHub</a>
-                {" · "}Licensed CC BY-NC-SA 4.0
-            </p>
         </div>
     );
 }
